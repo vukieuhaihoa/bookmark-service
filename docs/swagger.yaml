@@ -1,0 +1,376 @@
+basePath: /
+definitions:
+  bookmark.createBookmarkRequest:
+    properties:
+      description:
+        example: A sample bookmark
+        type: string
+      url:
+        example: https://example.com
+        type: string
+    required:
+    - description
+    - url
+    type: object
+  bookmark.createBookmarkResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Bookmark'
+      message:
+        type: string
+    type: object
+  bookmark.updateBookmarkRequest:
+    properties:
+      description:
+        type: string
+      url:
+        type: string
+    required:
+    - description
+    - url
+    type: object
+  healthcheck.healthCheckResponse:
+    properties:
+      instance_id:
+        type: string
+      message:
+        type: string
+      service_name:
+        type: string
+    type: object
+  link.shortenURLRequest:
+    properties:
+      exp:
+        example: 10000
+        maximum: 604800
+        type: integer
+      url:
+        example: https://www.example.com
+        type: string
+    required:
+    - exp
+    - url
+    type: object
+  link.shortenURLResponse:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    type: object
+  model.Bookmark:
+    properties:
+      code:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: This is the API documentation for the Bookmark Management service.
+  title: Bookmark API for Bookmark Management Backend(DDD Architecture)
+  version: "1.2"
+paths:
+  /health-check:
+    get:
+      description: Performs a health check and returns the service status.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/healthcheck.healthCheckResponse'
+      summary: Health Check
+      tags:
+      - health
+  /v1/bookmarks:
+    get:
+      description: Retrieve a list of bookmarks for the authenticated user with pagination
+        and sorting
+      parameters:
+      - default: 1
+        description: Page number
+        example: 1
+        in: query
+        name: page
+        type: integer
+      - default: 5
+        description: Number of items per page
+        example: 5
+        in: query
+        name: limit
+        type: integer
+      - default: -created_at
+        description: Sorting criteria(
+        example: -created_at,description
+        in: query
+        name: sort
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            properties:
+              data:
+                items:
+                  $ref: '#/definitions/model.Bookmark'
+                type: array
+              pagination:
+                properties:
+                  limit:
+                    type: integer
+                  page:
+                    type: integer
+                  total:
+                    type: integer
+                type: object
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      security:
+      - Bearer: []
+      summary: List bookmarks
+      tags:
+      - Bookmarks
+    post:
+      consumes:
+      - application/json
+      description: Create a new bookmark for the authenticated user
+      parameters:
+      - description: Create Bookmark Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/bookmark.createBookmarkRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/bookmark.createBookmarkResponse'
+        "400":
+          description: Bad Request
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      security:
+      - Bearer: []
+      summary: Create a new bookmark
+      tags:
+      - Bookmarks
+  /v1/bookmarks/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete bookmark by ID for authenticated user
+      parameters:
+      - description: Bookmark ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      security:
+      - Bearer: []
+      summary: Delete bookmark by ID
+      tags:
+      - Bookmarks
+    put:
+      consumes:
+      - application/json
+      description: Update bookmark by ID for authenticated user
+      parameters:
+      - description: Bookmark ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Bookmark update info
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/bookmark.updateBookmarkRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Update bookmark by ID
+      tags:
+      - Bookmarks
+  /v1/links/redirect/{code}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the original URL from a given shortened code.
+      parameters:
+      - description: Shortened code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+      summary: Get original URL
+      tags:
+      - URL
+  /v1/links/shorten:
+    post:
+      consumes:
+      - application/json
+      description: Shortens a given URL and returns a unique code.
+      parameters:
+      - description: URL to shorten
+        in: body
+        name: shortenURLRequest
+        required: true
+        schema:
+          $ref: '#/definitions/link.shortenURLRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/link.shortenURLResponse'
+      summary: Shorten a URL
+      tags:
+      - URL
+schemes:
+- http
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
