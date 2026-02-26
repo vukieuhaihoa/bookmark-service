@@ -586,7 +586,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8081",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
-	Title:            "Bookmark API for Bookmark Management Backend(DDD Architecture)",
+	Title:            "Bookmark API for Bookmark Management Backend(DDD Version)",
 	Description:      "This is the API documentation for the Bookmark Management service.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
