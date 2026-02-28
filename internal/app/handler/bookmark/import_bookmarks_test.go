@@ -175,10 +175,10 @@ func TestHandler_ImportBookmarks(t *testing.T) {
 			ctx, _ := gin.CreateTestContext(rec)
 
 			tc.setupRequest(ctx, body, writer)
-			mockQueueSvc := tc.setupMockSvc(ctx)
+			queueSvc := tc.setupMockSvc(ctx)
 
 			handler := &bookmarkHandler{
-				queueSvc:  mockQueueSvc,
+				queueSvc:  queueSvc,
 				validator: validate,
 			}
 

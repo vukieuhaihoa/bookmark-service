@@ -11,7 +11,7 @@ import (
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue"
 )
 
-const LimitCVSFileSize = 10 << 20 // 10 MiB
+const LimitCSVFileSize = 10 << 20 // 10 MiB
 
 // ImportBookmarks handles the HTTP request to import bookmarks from a file for the authenticated user.
 // @Summary      Import bookmarks from a file
@@ -23,6 +23,7 @@ const LimitCVSFileSize = 10 << 20 // 10 MiB
 // @Success      200   {object}	object{message=string}
 // @Failure      400   {object}  object{message=string}
 // @Failure      401   {object}  object{message=string}
+// @Failure      500   {object}  object{message=string}
 // @Security		 Bearer
 // @Router       /v1/bookmarks/import [post]
 func (h *bookmarkHandler) ImportBookmarks(c *gin.Context) {
@@ -44,7 +45,7 @@ func (h *bookmarkHandler) ImportBookmarks(c *gin.Context) {
 	}
 
 	// check file size
-	if file.Size > LimitCVSFileSize {
+	if file.Size > LimitCSVFileSize {
 		c.JSON(http.StatusBadRequest, common.Message{
 			Message: "file size exceeds the limit.",
 		})

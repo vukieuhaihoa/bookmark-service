@@ -38,7 +38,7 @@ func TestBookmarkEndpoint_ImportBookmarks(t *testing.T) {
 		expectedStatusCode      int
 		expectedMessageResponse string
 
-		verifyRedisQueue func(mock *redis.Client, ctx context.Context)
+		verifyRedisQueue func(ctx context.Context, mock *redis.Client)
 	}{
 		{
 			name: "successful import bookmarks",
@@ -63,9 +63,9 @@ func TestBookmarkEndpoint_ImportBookmarks(t *testing.T) {
 			expectedStatusCode:      http.StatusOK,
 			expectedMessageResponse: `"message":"Successfully sent bookmark imports to queue!"`,
 
-			verifyRedisQueue: func(mock *redis.Client, ctx context.Context) {
+			verifyRedisQueue: func(ctx context.Context, mock *redis.Client) {
 				assert.Equal(t, int64(1), mock.LLen(ctx, "bookmark_import_queue").Val())
-				assert.Equal(t, `{"user_id":"4d9326d6-980c-4c62-9709-dbc70a82cbfe","bookmarks":[{"description":"Example Website","url":"https://example.com"}]}`, mock.LPop(ctx, "bookmark_import_queue").Val())
+				assert.Equal(t, `{"user_id":"4d9326d6-980c-4c62-9709-dbc70a82cbfe","bookmarks":[{"description":"Example Website","url":"https://example.com"}]}`, mock.RPop(ctx, "bookmark_import_queue").Val())
 			},
 		},
 		{
@@ -199,7 +199,7 @@ func TestBookmarkEndpoint_ImportBookmarks(t *testing.T) {
 			assert.Contains(t, respRec.Body.String(), tc.expectedMessageResponse)
 
 			if tc.verifyRedisQueue != nil {
-				tc.verifyRedisQueue(redisClient, ctx)
+				tc.verifyRedisQueue(ctx, redisClient)
 			}
 		})
 	}

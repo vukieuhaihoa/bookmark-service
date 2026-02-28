@@ -11,7 +11,7 @@ import (
 const DefaultImportBookmarkBatchSize = 5
 
 var (
-	ErrUnmarshalMessage = errors.New("failed to unmarshal message")
+	ErrMarshalMessage = errors.New("failed to marshal message")
 )
 
 type ImportMessage struct {
@@ -56,7 +56,7 @@ func (s *queueService) sendJob(ctx context.Context, uid string, bookmarks []*Imp
 
 	messageBytes, err := json.Marshal(message)
 	if err != nil {
-		return ErrUnmarshalMessage
+		return ErrMarshalMessage
 	}
 
 	return s.repo.PushMessage(ctx, messageBytes)
