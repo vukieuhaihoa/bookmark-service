@@ -341,6 +341,13 @@ paths:
               message:
                 type: string
             type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
       security:
       - Bearer: []
       summary: Import bookmarks from a file
