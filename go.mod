@@ -14,7 +14,7 @@ require (
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.1
 	github.com/swaggo/swag v1.16.6
-	github.com/vukieuhaihoa/bookmark-libs v0.1.0
+	github.com/vukieuhaihoa/bookmark-libs v0.2.0
 	gorm.io/gorm v1.31.1
 )
 
@@ -37,6 +37,7 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/gocarina/gocsv v0.0.0-20240520201108-78e41c74b4b1 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/goccy/go-yaml v1.18.0 // indirect
 	github.com/golang-migrate/migrate/v4 v4.19.1 // indirect

@@ -19,6 +19,9 @@ import (
 
 	middleware "github.com/vukieuhaihoa/bookmark-libs/middlewares"
 
+	queueRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/queue"
+	queueService "github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue"
+
 	"github.com/vukieuhaihoa/bookmark-libs/ratelimit"
 	bookmarkHandler "github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark"
 	bookmarkRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark"
@@ -37,7 +40,9 @@ import (
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/validators"
 )
 
-var registerValidationsOnce sync.Once
+const (
+	RedisMessageQueueName = "bookmark_import_queue"
+)
 
 // Engine defines the contract for the HTTP server engine.
 // It provides methods to start and manage the API server lifecycle.
@@ -76,6 +81,8 @@ type api struct {
 	jwtGenerator jwtutils.JWTGenerator
 
 	jwtValidator jwtutils.JWTValidator
+
+	validate *validator.Validate
 }
 
 type EngineOpts struct {
@@ -172,17 +179,31 @@ func (a *api) registerRoutes() {
 		v1Private.PUT("/bookmarks/:id", allHandler.bookmarkHandler.UpdateBookmarkByID)
 		v1Private.DELETE("/bookmarks/:id", allHandler.bookmarkHandler.DeleteBookmarkByID)
 
+		v1Private.POST("/bookmarks/import", allHandler.bookmarkHandler.ImportBookmarks)
 	}
 
 }
 
+var (
+	registerValidationsOnce sync.Once
+	validate                *validator.Validate
+)
+
+// registerValidations registers custom validation functions with the Gin binding validator.
+// It uses sync.Once to ensure that validations are registered only once during the application lifecycle.
 func (a *api) registerValidations() {
 	registerValidationsOnce.Do(func() {
-		if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-			// Register custom validation functions here
-			v.RegisterValidation("password_strength", validators.PasswordStrength)
+		validate = validator.New()
+		// Set the tag name to "binding" to match Gin's default validation tag
+		validate.SetTagName("binding")
+		validate.RegisterValidation("password_strength", validators.PasswordStrength)
+
+		// IMPORTANT: We need to set the custom validator to the Gin binding validator to ensure that it is used for validating incoming requests.
+		if engine, ok := binding.Validator.Engine().(*validator.Validate); ok {
+			*engine = *validate
 		}
 	})
+	a.validate = validate
 }
 
 // handlers aggregates all HTTP handlers for different API endpoints.
@@ -195,6 +216,8 @@ type handlers struct {
 // registerHandlers initializes and returns all handler instances used in the API.
 func (a *api) registerHandlers() *handlers {
 	redisCache := cache.NewRedisCache(a.redisClient)
+	queueRepo := queueRepository.NewRedisQueue(a.redisClient, RedisMessageQueueName)
+	queueSvc := queueService.NewQueueService(queueRepo)
 
 	healthCheckRepo := healthCheckRepository.NewHealthCheckRepository(a.redisClient, a.db)
 	healthCheckSvc := healthCheckService.NewHealthCheckService(a.cfg.ServiceName, a.cfg.InstanceID, healthCheckRepo)
@@ -203,7 +226,7 @@ func (a *api) registerHandlers() *handlers {
 	bookmarkRepo := bookmarkRepository.NewBookmarkRepository(a.db)
 	bookmarkSvc := bookmarkService.NewBookmarkService(bookmarkRepo)
 	bookmarkSvcWithCache := bookmarkService.NewBookmarkServiceWithCache(bookmarkSvc, redisCache)
-	bookmarkHandler := bookmarkHandler.NewBookmarkHandler(bookmarkSvcWithCache)
+	bookmarkHandler := bookmarkHandler.NewBookmarkHandler(bookmarkSvcWithCache, queueSvc, a.validate)
 
 	shortenURLRepo := linkRepository.NewLinkRepository(a.redisClient)
 	shortenURLSvc := linkService.NewLinkService(shortenURLRepo, a.randomCodeGen, bookmarkRepo)

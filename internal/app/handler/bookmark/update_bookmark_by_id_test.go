@@ -12,9 +12,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/assert"
+	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/mocks"
-	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
 )
 
 func TestHandler_UpdateBookmarkByID(t *testing.T) {
@@ -239,7 +239,7 @@ func TestHandler_UpdateBookmarkByID(t *testing.T) {
 			mockSvc := tc.setupMockBookmarkService(ctx, tc.inputBookmarkID, tc.inputUserID, tc.inputRequest)
 
 			// Create handler with mock service
-			handler := NewBookmarkHandler(mockSvc)
+			handler := NewBookmarkHandler(mockSvc, nil, nil)
 
 			// Call the handler
 			handler.UpdateBookmarkByID(ctx)

@@ -10,8 +10,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/assert"
-	"github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/mocks"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+	"github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/mocks"
 )
 
 func TestHandler_DeleteBookmarkByID(t *testing.T) {
@@ -161,7 +161,7 @@ func TestHandler_DeleteBookmarkByID(t *testing.T) {
 			bookmarkServiceMock := tc.setupMockBookmarkService(ctx, tc.inputBookmarkID, tc.inputUserID)
 
 			// Create handler with mock service
-			handler := NewBookmarkHandler(bookmarkServiceMock)
+			handler := NewBookmarkHandler(bookmarkServiceMock, nil, nil)
 
 			// Call DeleteBookmarkByID handler
 			handler.DeleteBookmarkByID(ctx)

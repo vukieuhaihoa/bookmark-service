@@ -11,10 +11,10 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 	svcMocks "github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/mocks"
 	"github.com/vukieuhaihoa/bookmark-service/internal/test/fixture"
-	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 )
 
 var testQueryOpts = &common.QueryOptions{
@@ -174,7 +174,7 @@ func TestHandler_ListBookmarks(t *testing.T) {
 			mockBookmarkSvc := tc.setupMockSvc(ctx)
 
 			// Create handler with mock service
-			handler := NewBookmarkHandler(mockBookmarkSvc)
+			handler := NewBookmarkHandler(mockBookmarkSvc, nil, nil)
 
 			// Call the ListBookmarks handler
 			handler.ListBookmarks(ctx)

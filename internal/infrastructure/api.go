@@ -42,6 +42,8 @@ func CreateAPI() api.Engine {
 	jwtGenerator, jwtValidator := CreateJWTProviders()
 	app := gin.New()
 
+	// app.MaxMultipartMemory = 8 << 20 // 8 MiB
+
 	apiEngine := api.New(&api.EngineOpts{
 		Engine:      app,
 		Cfg:         cfg,

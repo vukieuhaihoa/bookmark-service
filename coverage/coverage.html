@@ -1,0 +1,2594 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>api: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/vukieuhaihoa/bookmark-service/internal/api/api.go (98.0%)</option>
+				
+				<option value="file1">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/create_bookmark.go (88.9%)</option>
+				
+				<option value="file2">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/delete_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file3">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/handler.go (100.0%)</option>
+				
+				<option value="file4">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/import_bookmarks.go (86.2%)</option>
+				
+				<option value="file5">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/list_bookmarks.go (90.5%)</option>
+				
+				<option value="file6">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark/update_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file7">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/healthcheck/check.go (100.0%)</option>
+				
+				<option value="file8">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/healthcheck/handler.go (100.0%)</option>
+				
+				<option value="file9">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/link/get_url.go (100.0%)</option>
+				
+				<option value="file10">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/link/handler.go (100.0%)</option>
+				
+				<option value="file11">github.com/vukieuhaihoa/bookmark-service/internal/app/handler/link/shorten_url.go (100.0%)</option>
+				
+				<option value="file12">github.com/vukieuhaihoa/bookmark-service/internal/app/model/base.go (100.0%)</option>
+				
+				<option value="file13">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/create_bookmark.go (69.2%)</option>
+				
+				<option value="file14">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/delete_bookmark_by_id.go (83.3%)</option>
+				
+				<option value="file15">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/get_bookmark_by_code_shorten_encoded.go (100.0%)</option>
+				
+				<option value="file16">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/list_bookmarks.go (88.9%)</option>
+				
+				<option value="file17">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/repo.go (100.0%)</option>
+				
+				<option value="file18">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark/update_bookmark_by_id.go (83.3%)</option>
+				
+				<option value="file19">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache/del.go (100.0%)</option>
+				
+				<option value="file20">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache/get.go (100.0%)</option>
+				
+				<option value="file21">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache/redis.go (100.0%)</option>
+				
+				<option value="file22">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache/set.go (100.0%)</option>
+				
+				<option value="file23">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/healthcheck/db_ping.go (75.0%)</option>
+				
+				<option value="file24">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/healthcheck/redis_ping.go (100.0%)</option>
+				
+				<option value="file25">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/healthcheck/repo.go (100.0%)</option>
+				
+				<option value="file26">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link/get_url.go (100.0%)</option>
+				
+				<option value="file27">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link/repo.go (100.0%)</option>
+				
+				<option value="file28">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link/store_url.go (100.0%)</option>
+				
+				<option value="file29">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link/store_url_if_absent.go (100.0%)</option>
+				
+				<option value="file30">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/queue/push_message.go (100.0%)</option>
+				
+				<option value="file31">github.com/vukieuhaihoa/bookmark-service/internal/app/repository/queue/redis.go (100.0%)</option>
+				
+				<option value="file32">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/cache_create_bookmark.go (100.0%)</option>
+				
+				<option value="file33">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/cache_delete_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file34">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/cache_list_bookmarks.go (92.0%)</option>
+				
+				<option value="file35">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/cache_service.go (100.0%)</option>
+				
+				<option value="file36">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/cache_update_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file37">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/create_bookmark.go (100.0%)</option>
+				
+				<option value="file38">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/delete_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file39">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/list_bookmarks.go (100.0%)</option>
+				
+				<option value="file40">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/service.go (100.0%)</option>
+				
+				<option value="file41">github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark/update_bookmark_by_id.go (100.0%)</option>
+				
+				<option value="file42">github.com/vukieuhaihoa/bookmark-service/internal/app/service/healthcheck/check.go (100.0%)</option>
+				
+				<option value="file43">github.com/vukieuhaihoa/bookmark-service/internal/app/service/healthcheck/service.go (100.0%)</option>
+				
+				<option value="file44">github.com/vukieuhaihoa/bookmark-service/internal/app/service/link/get_url.go (90.0%)</option>
+				
+				<option value="file45">github.com/vukieuhaihoa/bookmark-service/internal/app/service/link/service.go (100.0%)</option>
+				
+				<option value="file46">github.com/vukieuhaihoa/bookmark-service/internal/app/service/link/shorten_url.go (100.0%)</option>
+				
+				<option value="file47">github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue/send_import_bookmark_job.go (90.0%)</option>
+				
+				<option value="file48">github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue/service.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package api provides the HTTP API server implementation for the bookmark management application.
+// It handles routing, middleware, and server lifecycle management using the Gin web framework.
+package api
+
+import (
+        "net/http"
+        "sync"
+
+        "github.com/gin-gonic/gin"
+        "github.com/gin-gonic/gin/binding"
+        "github.com/go-playground/validator/v10"
+        "github.com/redis/go-redis/v9"
+        swaggerFiles "github.com/swaggo/files"
+        ginSwagger "github.com/swaggo/gin-swagger"
+        "github.com/vukieuhaihoa/bookmark-service/docs"
+        "gorm.io/gorm"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache"
+
+        middleware "github.com/vukieuhaihoa/bookmark-libs/middlewares"
+
+        queueRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/queue"
+        queueService "github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue"
+
+        "github.com/vukieuhaihoa/bookmark-libs/ratelimit"
+        bookmarkHandler "github.com/vukieuhaihoa/bookmark-service/internal/app/handler/bookmark"
+        bookmarkRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark"
+        bookmarkService "github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark"
+
+        healthCheckHandler "github.com/vukieuhaihoa/bookmark-service/internal/app/handler/healthcheck"
+        healthCheckRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/healthcheck"
+        healthCheckService "github.com/vukieuhaihoa/bookmark-service/internal/app/service/healthcheck"
+
+        linkHandler "github.com/vukieuhaihoa/bookmark-service/internal/app/handler/link"
+        linkRepository "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link"
+        linkService "github.com/vukieuhaihoa/bookmark-service/internal/app/service/link"
+
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/jwtutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/validators"
+)
+
+const (
+        RedisMessageQueueName = "bookmark_import_queue"
+)
+
+// Engine defines the contract for the HTTP server engine.
+// It provides methods to start and manage the API server lifecycle.
+type Engine interface {
+        // Start initializes and starts the HTTP server.
+        // Returns an error if the server fails to start or encounters a runtime error.
+        Start() error
+
+        // ServeHTTP allows the engine to handle HTTP requests.
+        // It satisfies the http.Handler interface.
+        // Parameters:
+        //   - w: The http.ResponseWriter to write the response
+        //   - r: The incoming http.Request to be handled
+        ServeHTTP(w http.ResponseWriter, r *http.Request)
+}
+
+// api is the concrete implementation of the Engine interface.
+// It encapsulates the Gin engine and provides HTTP server functionality.
+type api struct {
+        // app is the underlying Gin engine instance that handles HTTP routing and middleware
+        app *gin.Engine
+
+        // cfg holds the configuration settings for the API server
+        cfg *Config
+
+        // redisClient is the Redis client used for caching and session management
+        redisClient *redis.Client
+
+        // randomCodeGen is the code generator used for generating random codes
+        randomCodeGen utils.CodeGenerator
+
+        passwordHashing utils.PasswordHashing
+
+        db *gorm.DB
+
+        jwtGenerator jwtutils.JWTGenerator
+
+        jwtValidator jwtutils.JWTValidator
+
+        validate *validator.Validate
+}
+
+type EngineOpts struct {
+        Engine          *gin.Engine
+        Cfg             *Config
+        RedisClient     *redis.Client
+        SqlDB           *gorm.DB
+        RandomCodeGen   utils.CodeGenerator
+        PasswordHashing utils.PasswordHashing
+        JWTGenerator    jwtutils.JWTGenerator
+        JWTValidator    jwtutils.JWTValidator
+}
+
+// New creates a new instance of the API engine with the provided options.
+// It initializes the Gin engine, configures routes, and sets up middleware.
+//
+// Parameters:
+//   - opts: EngineOpts containing dependencies and configurations for the API engine
+//
+// Returns:
+//   - Engine: An instance of the API engine implementing the Engine interface
+func New(opts *EngineOpts) Engine <span class="cov10" title="120">{
+        a := &amp;api{
+                app:             opts.Engine,
+                cfg:             opts.Cfg,
+                redisClient:     opts.RedisClient,
+                randomCodeGen:   opts.RandomCodeGen,
+                passwordHashing: opts.PasswordHashing,
+                db:              opts.SqlDB,
+                jwtGenerator:    opts.JWTGenerator,
+                jwtValidator:    opts.JWTValidator,
+        }
+
+        a.registerValidations()
+        a.registerRoutes()
+
+        return a
+}</span>
+
+// Start initializes and starts the HTTP server.
+// It listens on the configured application port and begins handling incoming requests.
+// defaults to port 8080 if not specified in the configuration.
+// Returns:
+//   - error: An error if the server fails to start, nil otherwise
+func (a *api) Start() error <span class="cov0" title="0">{
+        return a.app.Run(a.cfg.AppPort)
+}</span>
+
+// ServeHTTP allows the api struct to satisfy the http.Handler interface.
+// It delegates HTTP requests to the underlying Gin engine.
+//
+// Parameters:
+//   - w: The http.ResponseWriter to write the response
+//   - r: The incoming http.Request to be handled
+func (a *api) ServeHTTP(w http.ResponseWriter, r *http.Request) <span class="cov10" title="120">{
+        a.app.ServeHTTP(w, r)
+}</span>
+
+// registerRoutes configures all HTTP routes and their handlers for the API.
+// This method initializes services and handlers, then registers them with the Gin engine.
+// Currently registers the password generation endpoint.
+func (a *api) registerRoutes() <span class="cov10" title="120">{
+        allHandler := a.registerHandlers()
+        allMiddlewares := a.registerMiddlewares()
+
+        // Swagger info setup
+        docs.SwaggerInfo.Host = a.cfg.AppHostName
+
+        // Register health check endpoint
+        a.app.GET("/health-check", allHandler.healthCheckHandler.Check)
+        // Register Swagger documentation endpoint
+        a.app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+        // API version group
+        v1 := a.app.Group("/v1")
+        v1.Use(allMiddlewares.rateLimitMiddleware.RateLimit(middleware.RateLimitIPKey)) // Apply rate limiting middleware to all /v1 routes
+        </span><span class="cov10" title="120">{
+
+                // Register URL shortening endpoint
+                v1.POST("/links/shorten", allHandler.shortenURLHandler.ShortenURL)
+
+                // Redirect endpoint for shortened URLs by given code
+                v1.GET("/links/redirect/:code", allHandler.shortenURLHandler.GetURL)
+
+        }</span>
+
+        <span class="cov10" title="120">v1Private := a.app.Group("/v1")
+        v1Private.Use(allMiddlewares.jwtAuth.JWTAuth())
+        v1Private.Use(allMiddlewares.rateLimitMiddleware.RateLimit(middleware.RateLimitUserIDKey)) // Apply rate limiting middleware to all /v1 routes for authenticated users
+        </span><span class="cov10" title="120">{
+
+                v1Private.POST("/bookmarks", allHandler.bookmarkHandler.CreateBookmark)
+                v1Private.GET("/bookmarks", allHandler.bookmarkHandler.ListBookmarks)
+                v1Private.PUT("/bookmarks/:id", allHandler.bookmarkHandler.UpdateBookmarkByID)
+                v1Private.DELETE("/bookmarks/:id", allHandler.bookmarkHandler.DeleteBookmarkByID)
+
+                v1Private.POST("/bookmarks/import", allHandler.bookmarkHandler.ImportBookmarks)
+        }</span>
+
+}
+
+var (
+        registerValidationsOnce sync.Once
+        validate                *validator.Validate
+)
+
+// registerValidations registers custom validation functions with the Gin binding validator.
+// It uses sync.Once to ensure that validations are registered only once during the application lifecycle.
+func (a *api) registerValidations() <span class="cov10" title="120">{
+        registerValidationsOnce.Do(func() </span><span class="cov5" title="9">{
+                validate = validator.New()
+                // Set the tag name to "binding" to match Gin's default validation tag
+                validate.SetTagName("binding")
+                validate.RegisterValidation("password_strength", validators.PasswordStrength)
+
+                // IMPORTANT: We need to set the custom validator to the Gin binding validator to ensure that it is used for validating incoming requests.
+                if engine, ok := binding.Validator.Engine().(*validator.Validate); ok </span><span class="cov5" title="9">{
+                        *engine = *validate
+                }</span>
+        })
+        <span class="cov10" title="120">a.validate = validate</span>
+}
+
+// handlers aggregates all HTTP handlers for different API endpoints.
+type handlers struct {
+        healthCheckHandler healthCheckHandler.Handler
+        shortenURLHandler  linkHandler.Handler
+        bookmarkHandler    bookmarkHandler.Handler
+}
+
+// registerHandlers initializes and returns all handler instances used in the API.
+func (a *api) registerHandlers() *handlers <span class="cov10" title="120">{
+        redisCache := cache.NewRedisCache(a.redisClient)
+        queueRepo := queueRepository.NewRedisQueue(a.redisClient, RedisMessageQueueName)
+        queueSvc := queueService.NewQueueService(queueRepo)
+
+        healthCheckRepo := healthCheckRepository.NewHealthCheckRepository(a.redisClient, a.db)
+        healthCheckSvc := healthCheckService.NewHealthCheckService(a.cfg.ServiceName, a.cfg.InstanceID, healthCheckRepo)
+        healthCheckHandler := healthCheckHandler.NewHealthCheckHandler(healthCheckSvc)
+
+        bookmarkRepo := bookmarkRepository.NewBookmarkRepository(a.db)
+        bookmarkSvc := bookmarkService.NewBookmarkService(bookmarkRepo)
+        bookmarkSvcWithCache := bookmarkService.NewBookmarkServiceWithCache(bookmarkSvc, redisCache)
+        bookmarkHandler := bookmarkHandler.NewBookmarkHandler(bookmarkSvcWithCache, queueSvc, a.validate)
+
+        shortenURLRepo := linkRepository.NewLinkRepository(a.redisClient)
+        shortenURLSvc := linkService.NewLinkService(shortenURLRepo, a.randomCodeGen, bookmarkRepo)
+        shortenURLHandler := linkHandler.NewLinkHandler(shortenURLSvc)
+
+        return &amp;handlers{
+                healthCheckHandler: healthCheckHandler,
+                shortenURLHandler:  shortenURLHandler,
+                bookmarkHandler:    bookmarkHandler,
+        }
+}</span>
+
+// middlewares aggregates all middleware instances used in the API.
+type middlewares struct {
+        jwtAuth             middleware.JWTAuth
+        rateLimitMiddleware middleware.RateLimit
+}
+
+// registerMiddlewares configures and returns all middleware instances used in the API.
+func (a *api) registerMiddlewares() *middlewares <span class="cov10" title="120">{
+        jwtAuth := middleware.NewJWTAuth(a.jwtValidator)
+
+        rateLimitRepo := ratelimit.NewRedisRepo(a.redisClient)
+        rateLimitMiddleware := middleware.NewRateLimit(rateLimitRepo)
+
+        return &amp;middlewares{
+                jwtAuth:             jwtAuth,
+                rateLimitMiddleware: rateLimitMiddleware,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package bookmark
+
+import (
+        "errors"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// createBookmarkRequest represents the expected payload for creating a new bookmark.
+type createBookmarkRequest struct {
+        Description string `json:"description" binding:"required" example:"A sample bookmark"`
+        URL         string `json:"url" binding:"required,url" example:"https://example.com"`
+}
+
+// createBookmarkResponse represents the response returned after creating a new bookmark.
+type createBookmarkResponse struct {
+        Data    *model.Bookmark `json:"data"`
+        Message string          `json:"message"`
+}
+
+// CreateBookmark generates a Gin framework handler that creates a new bookmark for the authenticated user.
+// @Summary      Create a new bookmark
+// @Description  Create a new bookmark for the authenticated user
+// @Tags         Bookmarks
+// @Accept       json
+// @Produce      json
+// @Param        request  body      createBookmarkRequest  true  "Create Bookmark Request"
+// @Success      201      {object}  createBookmarkResponse
+// @Failure      400      {object}  object{message=string}
+// @Failure      401      {object}  object{message=string}
+// @Failure      500      {object}  object{message=string}
+// @Security     Bearer
+// @Router       /v1/bookmarks [post]
+func (h *bookmarkHandler) CreateBookmark(c *gin.Context) <span class="cov10" title="24">{
+        // Implementation of the handler to create a bookmark
+        input := &amp;createBookmarkRequest{}
+        if err := c.ShouldBindJSON(input); err != nil </span><span class="cov6" title="6">{
+                c.JSON(http.StatusBadRequest, common.InputErrorResponse)
+                return
+        }</span>
+
+        <span class="cov9" title="18">userID, err := utils.GetUserIDFromJWTClaims(c)
+        if err != nil </span><span class="cov6" title="6">{
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return
+        }</span>
+
+        <span class="cov8" title="12">bookmark, err := h.svc.CreateBookmark(c, input.URL, input.Description, userID)
+        switch </span>{
+        case errors.Is(err, dbutils.ErrDuplicationType):<span class="cov0" title="0">
+                c.JSON(http.StatusBadRequest, common.InputErrorResponse)
+                return</span>
+        case errors.Is(err, dbutils.ErrForeignKeyType):<span class="cov4" title="3">
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return</span>
+        case errors.Is(err, nil):<span class="cov6" title="6"></span>
+        default:<span class="cov4" title="3">
+                log.Error().
+                        Str("operation", "CreateBookmark").
+                        Err(err).
+                        Msg("service return error when create bookmark")
+                c.JSON(http.StatusInternalServerError, common.InternalErrorResponse)
+                return</span>
+        }
+
+        // IMPORTANT: From version 3. Code is replaced by code_shorten_encoded, but we still keep code in the response for backward compatibility with clients using old version.
+        <span class="cov6" title="6">c.JSON(http.StatusCreated, &amp;createBookmarkResponse{
+                Data:    bookmark,
+                Message: "Create a bookmark successfully!",
+        })</span>
+
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package bookmark
+
+import (
+        "errors"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+)
+
+// DeleteBookmarkByID handles the HTTP request to delete a bookmark by its ID for the authenticated user.
+// @Summary      Delete bookmark by ID
+// @Description  Delete bookmark by ID for authenticated user
+// @Tags         Bookmarks
+// @Accept       json
+// @Produce      json
+// @Param        id   path      string  true  "Bookmark ID"
+// @Success      200  {object}  object{message=string}
+// @Failure      400  {object}  object{message=string}
+// @Failure      401  {object}  object{message=string}
+// @Failure      500  {object}  object{message=string}
+// @Security     Bearer
+// @Router       /v1/bookmarks/{id} [delete]
+func (b *bookmarkHandler) DeleteBookmarkByID(c *gin.Context) <span class="cov10" title="27">{
+        bookmarkID := c.Param("id")
+        if bookmarkID == "" </span><span class="cov4" title="3">{
+                c.JSON(http.StatusBadRequest, common.Message{
+                        Message: "Bookmark ID is required",
+                })
+                return
+        }</span>
+
+        <span class="cov9" title="24">userID, err := utils.GetUserIDFromJWTClaims(c)
+        if err != nil </span><span class="cov4" title="3">{
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return
+        }</span>
+
+        <span class="cov9" title="21">err = b.svc.DeleteBookmarkByID(c, bookmarkID, userID)
+        switch </span>{
+        case errors.Is(err, dbutils.ErrRecordNotFoundType):<span class="cov7" title="12">
+                c.JSON(http.StatusBadRequest, common.InputErrorResponse)
+                return</span>
+        case err == nil:<span class="cov5" title="6"></span>
+        default:<span class="cov4" title="3">
+                log.Error().Err(err).Msg("Failed to delete bookmark by ID")
+                c.JSON(http.StatusInternalServerError, common.InternalErrorResponse)
+                return</span>
+        }
+
+        <span class="cov5" title="6">c.JSON(http.StatusOK, common.Message{
+                Message: "Success",
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package bookmark
+
+import (
+        "github.com/gin-gonic/gin"
+        "github.com/go-playground/validator/v10"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/service/bookmark"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue"
+)
+
+// Handler defines the interface for bookmark-related HTTP handlers.
+type Handler interface {
+
+        // CreateBookmark handles the HTTP request to create a new bookmark for the authenticated user.
+        CreateBookmark(c *gin.Context)
+
+        // ListBookmarks handles the HTTP request to list bookmarks for the authenticated user.
+        ListBookmarks(c *gin.Context)
+
+        // UpdateBookmarkByID handles the HTTP request to update a bookmark by its ID for the authenticated user.
+        UpdateBookmarkByID(c *gin.Context)
+
+        // DeleteBookmarkByID handles the HTTP request to delete a bookmark by its ID for the authenticated user.
+        DeleteBookmarkByID(c *gin.Context)
+
+        // ImportBookmarks handles the HTTP request to import bookmarks from a file for the authenticated user.
+        ImportBookmarks(c *gin.Context)
+}
+
+// bookmarkHandler is the concrete implementation of the Handler interface.
+type bookmarkHandler struct {
+        svc       bookmark.Service
+        queueSvc  queue.Service
+        validator *validator.Validate
+}
+
+// NewBookmarkHandler creates a new instance of bookmarkHandler.
+// It takes a bookmark.Service and a queue.Service as parameters and returns a Handler interface.
+func NewBookmarkHandler(svc bookmark.Service, queueSvc queue.Service, validator *validator.Validate) Handler <span class="cov10" title="174">{
+        return &amp;bookmarkHandler{
+                svc:       svc,
+                queueSvc:  queueSvc,
+                validator: validator,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package bookmark
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/csv"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/service/queue"
+)
+
+const LimitCVSFileSize = 10 &lt;&lt; 20 // 10 MiB
+
+// ImportBookmarks handles the HTTP request to import bookmarks from a file for the authenticated user.
+// @Summary      Import bookmarks from a file
+// @Description  Import bookmarks from a file for the authenticated user
+// @Tags         Bookmarks
+// @Accept       multipart/form-data
+// @Produce      json
+// @Param        file  formData  file  true  "Bookmarks file to import"
+// @Success      200   {object}        object{message=string}
+// @Failure      400   {object}  object{message=string}
+// @Failure      401   {object}  object{message=string}
+// @Security                 Bearer
+// @Router       /v1/bookmarks/import [post]
+func (h *bookmarkHandler) ImportBookmarks(c *gin.Context) <span class="cov10" title="24">{
+        // get user ID from JWT claims
+        uid, err := utils.GetUserIDFromJWTClaims(c)
+        if err != nil </span><span class="cov6" title="6">{
+                log.Error().Err(err).Msg("Failed to get user ID from JWT claims")
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return
+        }</span>
+
+        // get file from form data
+        <span class="cov9" title="18">file, err := c.FormFile("file")
+        if err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, common.Message{
+                        Message: "invalid file.",
+                })
+                return
+        }</span>
+
+        // check file size
+        <span class="cov9" title="18">if file.Size &gt; LimitCVSFileSize </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, common.Message{
+                        Message: "file size exceeds the limit.",
+                })
+                return
+        }</span>
+
+        // parse CSV file and convert to import input
+        <span class="cov9" title="18">var importInput []*queue.ImportBookmarkInput
+        err = csv.ParseFromMultipartFile(file, &amp;importInput)
+        if err != nil </span><span class="cov6" title="6">{
+                log.Error().Err(err).Msg("Failed to parse CSV file")
+                c.JSON(http.StatusBadRequest, common.Message{
+                        Message: "failed to parse CSV file.",
+                })
+                return
+        }</span>
+        <span class="cov8" title="12">err = h.validator.Var(importInput, "dive")
+        if err != nil </span><span class="cov4" title="3">{
+                log.Error().Err(err).Msg("Validation failed for import input")
+                c.JSON(http.StatusBadRequest, common.InputFieldError(err))
+                return
+        }</span>
+
+        <span class="cov7" title="9">err = h.queueSvc.SendImportBookmarkJob(c, uid, importInput)
+        if err != nil </span><span class="cov4" title="3">{
+                log.Error().Err(err).Msg("Failed to push import bookmark message to queue")
+                c.JSON(http.StatusInternalServerError, common.Message{
+                        Message: "Failed to process bookmark imports.",
+                })
+                return
+        }</span>
+
+        <span class="cov6" title="6">c.JSON(http.StatusOK, common.Message{
+                Message: "Successfully sent bookmark imports to queue!",
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package bookmark
+
+import (
+        "errors"
+        "net/http"
+
+        "github.com/rs/zerolog/log"
+
+        "github.com/gin-gonic/gin"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// allowedSortFields maps the allowed sorting fields from query parameters to database column names.
+var allowedSortFields = map[string]struct{}{
+        "created_at":  {},
+        "updated_at":  {},
+        "url":         {},
+        "description": {},
+}
+
+// PagingRequest represents the expected query parameters for pagination and sorting when listing bookmarks.
+type PagingRequest struct {
+        Page  int    `form:"page" binding:"gte=1" default:"1" example:"1"`
+        Limit int    `form:"limit" binding:"gte=1,lte=50" default:"5" example:"5"`
+        Sort  string `form:"sort" example:"-created_at,updated_at" default:"-created_at"`
+}
+
+// ListBookmarks handles the HTTP request to list bookmarks for the authenticated user.
+// It supports pagination and sorting based on query parameters.
+// @Summary      List bookmarks
+// @Description  Retrieve a list of bookmarks for the authenticated user with pagination and sorting
+// @Tags         Bookmarks
+// @Produce      json
+// @Param        page   query     int    false  "Page number"        default(1)    example(1)
+// @Param        limit  query     int    false  "Number of items per page"  default(5)    example(5)
+// @Param        sort   query     string false  "Sorting criteria("-" for descending), e.g., -created_at,updated_at"  default(-created_at)  example(-created_at,description)
+// @Success      200    {object}  object{data=[]model.Bookmark,pagination=object{page=int,limit=int,total=int}} "Success"
+// @Failure      400    {object}  object{message=string}
+// @Failure      401    {object}  object{message=string}
+// @Failure      500    {object}  object{message=string}
+// @Security                 Bearer
+// @Router       /v1/bookmarks [get]
+func (b *bookmarkHandler) ListBookmarks(c *gin.Context) <span class="cov10" title="33">{
+        input := &amp;PagingRequest{}
+        if err := c.ShouldBindQuery(input); err != nil </span><span class="cov5" title="6">{
+                c.JSON(http.StatusBadRequest, common.InputFieldError(err))
+                return
+        }</span>
+
+        <span class="cov9" title="27">userID, err := utils.GetUserIDFromJWTClaims(c)
+        if err != nil </span><span class="cov6" title="9">{
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return
+        }</span>
+
+        <span class="cov8" title="18">parsedSortFields, err := common.ParseSortParams(input.Sort, allowedSortFields)
+        if err != nil </span><span class="cov5" title="6">{
+                c.JSON(http.StatusBadRequest, common.InvalidSortedFieldResponse)
+                return
+        }</span>
+
+        <span class="cov7" title="12">queryOptions := common.NewQueryOptions(input.Page, input.Limit, parsedSortFields)
+
+        res, err := b.svc.ListBookmarks(c, userID, queryOptions)
+        switch </span>{
+        case errors.Is(err, dbutils.ErrInvalidSortField):<span class="cov0" title="0">
+                c.JSON(http.StatusBadRequest, common.InputErrorResponse)
+                return</span>
+        case errors.Is(err, nil):<span class="cov6" title="9"></span>
+        default:<span class="cov3" title="3">
+                log.Error().
+                        Str("operation", "ListBookmarks").
+                        Err(err).
+                        Msg("service return error when list bookmarks")
+                c.JSON(http.StatusInternalServerError, common.InternalErrorResponse)
+                return</span>
+        }
+
+        <span class="cov6" title="9">c.JSON(http.StatusOK, &amp;common.SuccessResponse[[]*model.Bookmark]{
+                Data:       res,
+                Pagination: &amp;queryOptions.Paging,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package bookmark
+
+import (
+        "errors"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// updateBookmarkRequest represents the expected JSON body for updating a bookmark.
+type updateBookmarkRequest struct {
+        Description string `json:"description" binding:"required"`
+        URL         string `json:"url" binding:"required,url"`
+}
+
+// UpdateBookmarkByID handles the HTTP request to update a bookmark by its ID for the authenticated user.
+// @Summary      Update bookmark by ID
+// @Description  Update bookmark by ID for authenticated user
+// @Tags         Bookmarks
+// @Accept       json
+// @Produce      json
+// @Param        id   path      string  true  "Bookmark ID"
+// @Param        body body      updateBookmarkRequest  true  "Bookmark update info"
+// @Success      200  {object}  object{message=string}
+// @Failure      400  {object}  object{message=string}
+// @Failure      401  {object}  object{message=string}
+// @Failure      500  {object}  object{message=string}
+// @Security     BearerAuth
+// @Router       /v1/bookmarks/{id} [put]
+func (b *bookmarkHandler) UpdateBookmarkByID(c *gin.Context) <span class="cov10" title="33">{
+        input := &amp;updateBookmarkRequest{}
+        if err := c.ShouldBindJSON(input); err != nil </span><span class="cov3" title="3">{
+                c.JSON(http.StatusBadRequest, common.InputFieldError(err))
+                return
+        }</span>
+
+        <span class="cov9" title="30">bookmarkID := c.Param("id")
+        if bookmarkID == "" </span><span class="cov3" title="3">{
+                c.JSON(http.StatusBadRequest, common.Message{
+                        Message: "Bookmark ID is required",
+                })
+                return
+        }</span>
+
+        <span class="cov9" title="27">userID, err := utils.GetUserIDFromJWTClaims(c)
+        if err != nil </span><span class="cov5" title="6">{
+                c.JSON(http.StatusUnauthorized, common.UnauthorizedResponse)
+                return
+        }</span>
+
+        <span class="cov8" title="21">updatedBookmark := &amp;model.Bookmark{
+                Description: input.Description,
+                URL:         input.URL,
+        }
+
+        err = b.svc.UpdateBookmarkByID(c, bookmarkID, userID, updatedBookmark)
+        switch </span>{
+        case errors.Is(err, dbutils.ErrRecordNotFoundType):<span class="cov7" title="12">
+                c.JSON(http.StatusBadRequest, common.InputErrorResponse)
+                return</span>
+        case err == nil:<span class="cov5" title="6"></span>
+        default:<span class="cov3" title="3">
+                log.Error().
+                        Str("operation", "UpdateBookmarkByID").
+                        Err(err).
+                        Msg("service return error when update bookmark by ID")
+                c.JSON(http.StatusInternalServerError, common.InternalErrorResponse)
+                return</span>
+        }
+
+        <span class="cov5" title="6">c.JSON(http.StatusOK, common.Message{
+                Message: "Success",
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package healthcheck
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+)
+
+// healthCheckResponse represents the JSON structure returned by the health check endpoint.
+type healthCheckResponse struct {
+        Message     string `json:"message"`
+        ServiceName string `json:"service_name"`
+        InstanceID  string `json:"instance_id"`
+}
+
+// Check is a Gin framework handler that performs a health check.
+// It calls the health check service to retrieve the current health status
+// and returns it as a JSON response.
+//
+// Parameters:
+//   - c: The Gin context containing the HTTP request and response
+//
+// Response:h
+//   - 200 OK: Returns the health status as a JSON object
+//
+// @Summary Health Check
+// @Description Performs a health check and returns the service status.
+// @Tags health
+// @Produce json
+// @Success 200 {object} healthCheckResponse
+// @Router /health-check [get]
+func (h *healthCheckHandler) Check(c *gin.Context) <span class="cov10" title="9">{
+        message, serviceName, instanceID, err := h.svc.Check(c)
+        if err != nil </span><span class="cov5" title="3">{
+                log.Error().Err(err).Msg("service return error when check health")
+                c.JSON(http.StatusInternalServerError, healthCheckResponse{
+                        Message:     message,
+                        ServiceName: serviceName,
+                        InstanceID:  instanceID,
+                })
+                return
+        }</span>
+        <span class="cov8" title="6">c.JSON(http.StatusOK, healthCheckResponse{
+                Message:     message,
+                ServiceName: serviceName,
+                InstanceID:  instanceID,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">// Package healthcheck provides HTTP handlers for health check operations.
+// It includes handlers for checking the health status of the application
+// using the Gin web framework.
+package healthcheck
+
+import (
+        "github.com/gin-gonic/gin"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/service/healthcheck"
+)
+
+// Handler defines the interface for health check HTTP handlers.
+// It provides a method for handling health check requests using the Gin framework.
+type Handler interface {
+        // Check is a Gin framework handler that performs a health check.
+        // It processes HTTP requests and returns the health status.
+        //
+        // Parameters:
+        //   - c: The Gin context containing the HTTP request and response
+        Check(ctx *gin.Context)
+}
+
+// healthCheckHandler handles health check HTTP requests.
+// It uses the HealthCheck service to retrieve health status information.
+type healthCheckHandler struct {
+        svc healthcheck.Service
+}
+
+// NewHealthCheckHandler creates a new instance of the HealthCheck handler.
+// It accepts a health check service implementation and returns a handler
+// that can process HTTP requests for health checks.
+//
+// Parameters:
+//   - svc: The health check service used for retrieving health status
+//
+// Returns:
+//   - Handler: A new health check handler instance
+func NewHealthCheckHandler(svc healthcheck.Service) Handler <span class="cov10" title="120">{
+        return &amp;healthCheckHandler{svc: svc}
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package link
+
+import (
+        "errors"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        service "github.com/vukieuhaihoa/bookmark-service/internal/app/service/link"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+)
+
+// GetURL handles the request to retrieve the original URL from a shortened code.
+// It takes a Gin context as input and processes the request to fetch the original URL.
+//
+// Parameters:
+//   - c: The Gin context containing the HTTP request and response
+//
+// @Summary Get original URL
+// @Description Retrieves the original URL from a given shortened code.
+// @Tags URL
+// @Accept json
+// @Produce json
+// @Param code path string true "Shortened code"
+// @Success 200 {object} shortenURLResponse
+// @Failure 400 {object} shortenURLResponse
+// @Failure 500 {object} shortenURLResponse
+// @Router /v1/links/redirect/{code} [get]
+func (h *linkHandler) GetURL(c *gin.Context) <span class="cov10" title="24">{
+        code := c.Param("code")
+        if code == "" </span><span class="cov4" title="3">{
+                c.JSON(http.StatusBadRequest, shortenURLResponse{
+                        Message: InValidRequestPayload.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov9" title="21">url, err := h.linkSvc.GetURL(c, code)
+        // Handle different error cases with switch statement
+        switch </span>{
+        case errors.Is(err, service.ErrCodeNotFound) || errors.Is(err, dbutils.ErrRecordNotFoundType):<span class="cov7" title="9">
+                c.JSON(http.StatusBadRequest, shortenURLResponse{
+                        Message: ErrCodeNotFound.Error(),
+                })
+                return</span>
+        case err == nil:<span class="cov7" title="9"></span> // MUST: to redirect when no error
+        default:<span class="cov4" title="3">
+                log.Error().Str("code", code).Err(err).Msg("service return error when get original url")
+                c.JSON(http.StatusInternalServerError, shortenURLResponse{
+                        Message: InternalServerError.Error(),
+                })
+                return</span>
+        }
+
+        <span class="cov7" title="9">c.Redirect(http.StatusFound, url)</span>
+}
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">// Package link provides HTTP handlers for link-related operations.
+// It includes handlers for shortening URLs and retrieving original URLs
+// using the Gin web framework.
+package link
+
+import (
+        "errors"
+
+        "github.com/gin-gonic/gin"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/service/link"
+)
+
+var (
+        ErrCodeNotFound       = errors.New("code not found")
+        InValidRequestPayload = errors.New("invalid request payload")
+        InternalServerError   = errors.New("internal server error")
+)
+
+// Handler is the interface for the shorten URL handler.
+type Handler interface {
+        // ShortenURL handles the URL shortening request.
+        // It takes a Gin context as input and processes the request to generate a shortened URL.
+        //
+        // Parameters:
+        //   - c: The Gin context containing the HTTP request and response
+        ShortenURL(c *gin.Context)
+
+        // GetURL handles the request to retrieve the original URL from a shortened code.
+        // It takes a Gin context as input and processes the request to fetch the original URL.
+        //
+        // Parameters:
+        //   - c: The Gin context containing the HTTP request and response
+        GetURL(c *gin.Context)
+}
+
+// linkHandler is the concrete implementation of the Handler interface.
+type linkHandler struct {
+        linkSvc link.Service
+}
+
+// NewLinkHandler creates a new instance of the LinkHandler.
+//
+// Parameters:
+//   - linkSvc: The link service used for link operations
+//
+// Returns:
+//   - Handler: A new shorten URL handler instance
+func NewLinkHandler(linkSvc link.Service) Handler <span class="cov10" title="144">{
+        return &amp;linkHandler{
+                linkSvc: linkSvc,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package link
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+)
+
+type shortenURLRequest struct {
+        URL      string `json:"url" binding:"required,url" example:"https://www.example.com"`
+        ExpireIn int    `json:"exp" binding:"required,lte=604800" example:"10000"`
+}
+
+type shortenURLResponse struct {
+        Code    string `json:"code,omitempty"`
+        Message string `json:"message"`
+}
+
+// ShortenURL handles the URL shortening request.
+// It takes a Gin context as input and processes the request to generate a shortened URL.
+//
+// Parameters:
+//   - c: The Gin context containing the HTTP request and response
+//
+// @Summary Shorten a URL
+// @Description Shortens a given URL and returns a unique code.
+// @Tags URL
+// @Accept json
+// @Produce json
+// @Param shortenURLRequest body shortenURLRequest true "URL to shorten"
+// @Success 200 {object} shortenURLResponse
+// @Failure 400 {object} shortenURLResponse
+// @Failure 500 {object} shortenURLResponse
+// @Router /v1/links/shorten [post]
+func (h *linkHandler) ShortenURL(c *gin.Context) <span class="cov10" title="15">{
+        // Implementation goes here
+        input := &amp;shortenURLRequest{}
+        err := c.ShouldBindJSON(input)
+        if err != nil || input.URL == "" || input.ExpireIn &lt;= 0 </span><span class="cov6" title="6">{
+                c.JSON(http.StatusBadRequest, shortenURLResponse{
+                        Message: InValidRequestPayload.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="9">code, err := h.linkSvc.ShortenURL(c, input.URL, input.ExpireIn)
+        if err != nil </span><span class="cov4" title="3">{
+                log.Error().Str("url", input.URL).Err(err).Msg("service return error when shorten url")
+                c.JSON(http.StatusInternalServerError, shortenURLResponse{
+                        Message: InternalServerError.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov6" title="6">c.JSON(http.StatusOK, shortenURLResponse{
+                Code:    code,
+                Message: "Shorten URL generated successfully!",
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">// package model defines the data models used in the application.
+// It includes the User model representing users in the system.
+package model
+
+import (
+        "time"
+
+        "github.com/google/uuid"
+        "gorm.io/gorm"
+)
+
+// Base defines common fields for all database models.
+type Base struct {
+        ID        string    `gorm:"primaryKey;type:uuid;column:id" json:"id"`
+        CreatedAt time.Time `gorm:"column:created_at" json:"created_at"`
+        UpdatedAt time.Time `gorm:"column:updated_at" json:"updated_at"`
+}
+
+// BeforeCreate is a GORM hook that is triggered before a new User record is created in the database.
+// It generates a new UUID for the user ID if it is not already set.
+//
+// Parameters:
+//   - tx: The GORM database transaction
+//
+// Returns:
+//   - error: An error if UUID generation fails, otherwise nil
+func (b *Base) BeforeCreate(tx *gorm.DB) (err error) <span class="cov10" title="1059">{
+        if b.ID == "" </span><span class="cov2" title="3">{
+                b.ID = uuid.New().String()
+        }</span>
+        <span class="cov10" title="1059">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/encoding"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "gorm.io/gorm"
+)
+
+// CreateBookmark creates a new bookmark in the database.
+// It takes a context and a bookmark model as input.
+// Returns the created bookmark and an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - bookmark: The bookmark model to be created.
+//
+// Returns:
+//   - *model.Bookmark: The created bookmark model.
+//   - error: An error if the creation fails, otherwise nil.
+func (r *bookmarkRepository) CreateBookmark(ctx context.Context, bookmark *model.Bookmark) (*model.Bookmark, error) <span class="cov10" title="6">{
+        err := r.db.WithContext(ctx).Transaction(func(tx *gorm.DB) error </span><span class="cov10" title="6">{
+                // NULL is inserted for code_shorten_encoded — no UNIQUE conflict
+                if err := tx.Omit("CodeShortenEncoded").Create(bookmark).Error; err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov10" title="6">encoded, err := encoding.StdEncoding.EncodeInt64ToString(bookmark.CodeShorten)
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov10" title="6">bookmark.CodeShortenEncoded = model.BookmarkShortenPrefix + encoded
+
+                if err := tx.Save(bookmark).Error; err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov10" title="6">return nil</span>
+        })
+
+        <span class="cov10" title="6">if err != nil </span><span class="cov0" title="0">{
+                return nil, dbutils.CatchDBError(err)
+        }</span>
+
+        <span class="cov10" title="6">return bookmark, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+)
+
+// DeleteBookmarkByID deletes a bookmark from the database by its ID and user ID.
+// It takes a context, an ID, and a user ID as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be deleted.
+//   - userID: The ID of the user who owns the bookmark.
+//
+// Returns:
+//   - error: An error if the deletion fails, otherwise nil.
+func (b *bookmarkRepository) DeleteBookmarkByID(ctx context.Context, id, userID string) error <span class="cov10" title="18">{
+        result := b.db.WithContext(ctx).Where("id = ? AND user_id = ?", id, userID).Delete(&amp;model.Bookmark{})
+        if result.Error != nil </span><span class="cov0" title="0">{
+                // log.Error().Err(result.Error).Msg("failed to delete bookmark")
+                return dbutils.CatchDBError(result.Error)
+        }</span>
+
+        <span class="cov10" title="18">if result.RowsAffected == 0 </span><span class="cov8" title="12">{
+                // log.Warn().Str("bookmark_id", id).Str("user_id", userID).Msg("no bookmark found to delete")
+                return dbutils.ErrRecordNotFoundType
+        }</span>
+
+        <span class="cov6" title="6">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+)
+
+// GetBookmarkByCodeShortenEncoded retrieves a bookmark by its unique code_shorten_encoded.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations.
+//   - code: The unique code_shorten_encoded of the bookmark to retrieve.
+//
+// Returns:
+//   - A pointer to the Bookmark model if found.
+//   - An error if the bookmark is not found or if a database error occurs.
+func (b *bookmarkRepository) GetBookmarkByCodeShortenEncoded(ctx context.Context, code string) (*model.Bookmark, error) <span class="cov10" title="9">{
+        res := &amp;model.Bookmark{}
+        err := b.db.WithContext(ctx).Where("code_shorten_encoded = ?", code).First(res).Error
+        if err != nil </span><span class="cov5" title="3">{
+                return nil, dbutils.CatchDBError(err)
+        }</span>
+
+        <span class="cov8" title="6">return res, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package bookmark
+
+import (
+        "context"
+        "fmt"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+)
+
+// ListBookmarks retrieves a list of bookmarks from the database for a specific user.
+// It takes a context, a user ID, and query options for pagination and sorting.
+// Returns a slice of bookmark models and an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - userID: The ID of the user whose bookmarks are to be retrieved.
+//   - opts: QueryOptions containing pagination and sorting details.
+//
+// Returns:
+//   - []*model.Bookmark: A slice of bookmark models.
+//   - error: An error if the retrieval fails, otherwise nil.
+func (r *bookmarkRepository) ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error) <span class="cov10" title="24">{
+        var bookmarks []*model.Bookmark
+
+        query := r.db.WithContext(ctx).Model(&amp;model.Bookmark{}).Where("user_id = ?", userID)
+
+        for _, sortField := range opts.Sorting </span><span class="cov10" title="24">{
+                query = query.Order(fmt.Sprintf("%s %s", sortField.Field, sortField.Direction))
+        }</span>
+
+        <span class="cov10" title="24">if err := query.Count(&amp;opts.Total).Error; err != nil </span><span class="cov0" title="0">{
+                return nil, dbutils.CatchDBError(err)
+        }</span>
+
+        <span class="cov10" title="24">if err := query.Offset((opts.Page - 1) * opts.Limit).Limit(opts.Limit).Find(&amp;bookmarks).Error; err != nil </span><span class="cov4" title="3">{
+                return nil, dbutils.CatchDBError(err)
+        }</span>
+
+        <span class="cov9" title="21">return bookmarks, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "gorm.io/gorm"
+)
+
+// Repository defines the interface for bookmark data operations.
+//
+//go:generate mockery --name=Repository --output=./mocks --filename=repo.go
+type Repository interface {
+        // CreateBookmark creates a new bookmark in the database.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - bookmark: The bookmark model to be created.
+        //
+        // Returns:
+        //   - *model.Bookmark: The created bookmark model.
+        //   - error: An error if the creation fails, otherwise nil.
+        CreateBookmark(ctx context.Context, bookmark *model.Bookmark) (*model.Bookmark, error)
+
+        // ListBookmarks retrieves a list of bookmarks for a specific user with optional query options.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - userID: The ID of the user whose bookmarks are to be retrieved.
+        //   - opts: QueryOptions containing pagination and sorting details.
+        //
+        // Returns:
+        //   - []*model.Bookmark: A slice of bookmark models.
+        //   - error: An error if the retrieval fails, otherwise nil.
+        ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error)
+
+        // UpdateBookmarkByID updates an existing bookmark in the database by its ID and user ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - id: The ID of the bookmark to be updated.
+        //   - userID: The ID of the user who owns the bookmark.
+        //   - updatedBookmark: The bookmark model containing the updated details.
+        //
+        // Returns:
+        //   - error: An error if the update fails, otherwise nil.
+        UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error
+
+        // DeleteBookmarkByID deletes a bookmark from the database by its ID and user ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - id: The ID of the bookmark to be deleted.
+        //   - userID: The ID of the user who owns the bookmark.
+        //
+        // Returns:
+        //   - error: An error if the deletion fails, otherwise nil.
+        DeleteBookmarkByID(ctx context.Context, id, userID string) error
+
+        // GetBookmarkByCodeShortenEncoded retrieves a bookmark from the database by its unique code_shorten_encoded.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - code: The unique code_shorten_encoded of the bookmark.
+        //
+        // Returns:
+        //   - *model.Bookmark: The bookmark model if found.
+        //   - error: An error if the retrieval fails or the bookmark is not found.
+        GetBookmarkByCodeShortenEncoded(ctx context.Context, code string) (*model.Bookmark, error)
+}
+
+// bookmarkRepository implements the Repository interface for bookmark data operations.
+type bookmarkRepository struct {
+        db *gorm.DB
+}
+
+// NewBookmarkRepository creates a new instance of bookmarkRepository.
+// It takes a gorm.DB instance as a parameter and returns a Repository interface.
+func NewBookmarkRepository(db *gorm.DB) Repository <span class="cov10" title="165">{
+        return &amp;bookmarkRepository{
+                db: db,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+)
+
+// UpdateBookmarkByID updates an existing bookmark in the database by its ID.
+// It takes a context, an ID, and a bookmark model with updated details as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be updated.
+//   - updatedBookmark: The bookmark model containing the updated details.
+//
+// Returns:
+//   - error: An error if the update fails, otherwise nil.
+func (b *bookmarkRepository) UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error <span class="cov10" title="18">{
+        result := b.db.WithContext(ctx).Model(&amp;model.Bookmark{}).Where("id = ? and user_id = ?", id, userID).Updates(updatedBookmark)
+        if result.Error != nil </span><span class="cov0" title="0">{
+                return dbutils.CatchDBError(result.Error)
+        }</span>
+
+        <span class="cov10" title="18">if result.RowsAffected == 0 </span><span class="cov8" title="12">{
+                return dbutils.ErrRecordNotFoundType
+        }</span>
+
+        <span class="cov6" title="6">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package cache
+
+import "context"
+
+// DelCacheData deletes the cache data for a given group key.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - groupKey: The group key under which the cache data is stored.
+//
+// Returns:
+//   - error: An error if the operation fails, otherwise nil.
+func (db *redisCache) DelCacheData(ctx context.Context, groupKey string) error <span class="cov10" title="27">{
+        return db.client.Del(ctx, groupKey).Err()
+}</span>
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package cache
+
+import "context"
+
+// GetCacheData retrieves the cache data for a given group key and key.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - groupKey: The group key under which the cache data is stored.
+//   - key: The specific key for the cache data.
+//
+// Returns:
+//   - []byte: The cached data as a byte slice.
+//   - error: An error if the operation fails, otherwise nil.
+func (db *redisCache) GetCacheData(ctx context.Context, groupKey, key string) ([]byte, error) <span class="cov10" title="12">{
+        result, err := db.client.HGet(ctx, groupKey, key).Bytes()
+        if err != nil </span><span class="cov8" title="9">{
+                return nil, err
+        }</span>
+
+        <span class="cov4" title="3">return result, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package cache
+
+import "github.com/redis/go-redis/v9"
+
+type redisCache struct {
+        client *redis.Client
+}
+
+// NewRedisCache creates a new instance of Redis cache implementing the DB interface.
+//
+// Parameters:
+//   - client: The Redis client to be used for cache operations.
+//
+// Returns:
+//   - DB: An instance of the cache database interface.
+func NewRedisCache(client *redis.Client) DB <span class="cov10" title="138">{
+        return &amp;redisCache{
+                client: client,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package cache
+
+import (
+        "context"
+        "time"
+)
+
+// SetCacheData sets the cache data for a given group key and key with an expiration time.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - groupKey: The group key under which the cache data is stored.
+//   - key: The specific key for the cache data.
+//   - value: The value to be cached.
+//   - exp: The expiration duration for the cached data.
+//
+// Returns:
+//   - error: An error if the operation fails, otherwise nil.
+func (db *redisCache) SetCacheData(ctx context.Context, groupKey, key string, value interface{}, exp time.Duration) error <span class="cov10" title="12">{
+        err := db.client.HSet(ctx, groupKey, key, value).Err()
+        if err != nil </span><span class="cov4" title="3">{
+                return err
+        }</span>
+
+        <span class="cov8" title="9">return db.client.Expire(ctx, groupKey, exp).Err()</span>
+}
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package healthcheck
+
+import "context"
+
+// DBPing checks the connectivity to the database.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//
+// Returns:
+//   - error: An error object if the ping operation fails, otherwise nil
+func (h *healthCheckStorage) DBPing(ctx context.Context) error <span class="cov10" title="9">{
+        sqlDB, err := h.db.DB()
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov10" title="9">return sqlDB.PingContext(ctx)</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package healthcheck
+
+import "context"
+
+// RedisPing checks the connectivity to the Redis server.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//
+// Returns:
+//   - error: An error object if the ping operation fails, otherwise nil
+func (h *healthCheckStorage) RedisPing(ctx context.Context) error <span class="cov10" title="9">{
+        return h.redisClient.Ping(ctx).Err()
+}</span>
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">// Package healthcheck provides functionality to perform health checks on the Redis server and database.
+// It defines the HealthCheck interface and its implementation.
+// The health checks include pinging the Redis server and the database to ensure connectivity.
+// This package is essential for monitoring the health of the application's dependencies.
+// It uses the go-redis and gorm libraries for interacting with Redis and the database respectively.
+package healthcheck
+
+import (
+        "context"
+
+        "github.com/redis/go-redis/v9"
+        "gorm.io/gorm"
+)
+
+// Repository defines the interface for performing health checks on the Redis server.
+//
+//go:generate mockery --name Repository --filename health_check_repo.go --output ./mocks
+type Repository interface {
+        // RedisPing checks the connectivity to the Redis server.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //
+        // Returns:
+        //   - error: An error object if the ping operation fails, otherwise nil
+        RedisPing(ctx context.Context) error
+
+        // DBPing checks the connectivity to the database.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //
+        // Returns:
+        //   - error: An error object if the ping operation fails, otherwise nil
+        DBPing(ctx context.Context) error
+}
+
+type healthCheckStorage struct {
+        redisClient *redis.Client
+        db          *gorm.DB
+}
+
+// NewHealthCheck creates a new instance of Repository using the provided Redis client and Gorm DB.
+//
+// Parameters:
+//   - redisClient: The Redis client used for health check operations
+//   - db: The Gorm DB used for health check operations
+//
+// Returns:
+//   - Repository: A new Repository instance
+func NewHealthCheckRepository(redisClient *redis.Client, db *gorm.DB) Repository <span class="cov10" title="132">{
+        return &amp;healthCheckStorage{
+                redisClient: redisClient,
+                db:          db,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">package link
+
+import "context"
+
+// GetURL retrieves the original URL associated with the given ID from Redis.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//   - id: The unique identifier for the URL to be retrieved
+//
+// Returns:
+//   - string: The original URL associated with the given ID
+//   - error: An error object if the retrieval fails, otherwise nil
+func (s *linkRepository) GetURL(ctx context.Context, id string) (string, error) <span class="cov10" title="9">{
+        return s.redisClient.Get(ctx, id).Result()
+}</span>
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">// Package link provides functionality for URL shortening and retrieval.
+// It defines the UrlStorage interface and its implementation.
+// The UrlStorage interface includes methods for storing and retrieving URLs using a Redis backend.
+// This package is essential for managing shortened URLs in the application.
+package link
+
+import (
+        "context"
+        "time"
+
+        "github.com/redis/go-redis/v9"
+)
+
+const (
+        defaultURLExpireTime = 24 * time.Hour
+)
+
+// Repository defines the interface for URL storage operations.
+// It provides methods for retrieving and storing URLs using a Redis backend.
+//
+//go:generate mockery --name Repository --filename shorten_url_repo.go --output ./mocks
+type Repository interface {
+        // GetURL retrieves the original URL associated with the given ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //   - id: The unique identifier for the URL to be retrieved
+        //
+        // Returns:
+        //   - string: The original URL associated with the given ID
+        //   - error: An error object if the retrieval fails, otherwise nil
+        GetURL(ctx context.Context, id string) (string, error)
+
+        // StoreURL stores the given URL with the associated code.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //   - code: The unique code to associate with the URL
+        //   - url: The original URL to be stored
+        //   - expireIn: The expiration time in seconds for the stored URL
+        //
+        // Returns:
+        //   - error: An error object if the storage operation fails, otherwise nil
+        StoreURL(ctx context.Context, code, url string, expireIn int) error
+
+        // StoreURLIfAbsent stores the given URL with the associated code only if the code does not already exist.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //   - code: The unique code to associate with the URL
+        //   - url: The original URL to be stored
+        //   - expireIn: The expiration time in seconds for the stored URL
+        //
+        // Returns:
+        //   - bool: True if the URL was stored successfully, false if the code already exists
+        //   - error: An error object if the storage operation fails, otherwise nil
+        StoreURLIfAbsent(ctx context.Context, code, url string, expireIn int) (bool, error)
+}
+
+// linkRepository is the concrete implementation of Repository interface.
+// It uses a Redis client to perform URL storage and retrieval operations.
+type linkRepository struct {
+        redisClient *redis.Client
+}
+
+// NewLinkRepository creates a new instance of linkRepository using the provided Redis client.
+//
+// Parameters:
+//   - redisClient: The Redis client used for URL storage operations
+//
+// Returns:
+//   - Repository: A new Repository instance
+func NewLinkRepository(redisClient *redis.Client) Repository <span class="cov10" title="144">{
+        return &amp;linkRepository{
+                redisClient: redisClient,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package link
+
+import (
+        "context"
+        "time"
+)
+
+// StoreURL stores the given URL with the associated code in Redis with a default expiration time.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//   - code: The unique code to associate with the URL
+//   - url: The original URL to be stored
+//   - expireIn: The expiration time in seconds for the stored URL
+//
+// Returns:
+//   - error: An error object if the storage operation fails, otherwise nil
+func (s *linkRepository) StoreURL(ctx context.Context, code, url string, expireIn int) error <span class="cov10" title="6">{
+        if expireIn &lt;= 0 </span><span class="cov10" title="6">{
+                expireIn = int(defaultURLExpireTime)
+        }</span>
+        <span class="cov10" title="6">return s.redisClient.Set(ctx, code, url, time.Duration(expireIn)*time.Second).Err()</span>
+}
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package link
+
+import (
+        "context"
+        "time"
+)
+
+// StoreURLIfAbsent attempts to store the given URL with the associated code in Redis only if the code does not already exist.
+// It returns a boolean indicating whether the URL was stored (true if the code was absent and the URL was stored, false if the code already exists).
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//   - code: The unique code to associate with the URL
+//   - url: The original URL to be stored
+//   - expireIn: The expiration time in seconds for the stored URL
+//
+// Returns:
+//   - bool: True if the URL was stored (code was absent), false if the code already exists
+//   - error: An error object if the storage operation fails, otherwise nil
+func (s *linkRepository) StoreURLIfAbsent(ctx context.Context, code, url string, expireIn int) (bool, error) <span class="cov10" title="15">{
+        if expireIn &lt;= 0 </span><span class="cov4" title="3">{
+                expireIn = int(defaultURLExpireTime.Seconds())
+        }</span>
+        <span class="cov10" title="15">return s.redisClient.SetNX(ctx, code, url, time.Duration(expireIn)*time.Second).Result()</span>
+}
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package queue
+
+import "context"
+
+// PushMessage pushes a message to the Redis queue.
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellation.
+//   - message: The message to be pushed to the queue, represented as a byte slice.
+//
+// Returns an error if the operation fails.
+func (r *redisQueue) PushMessage(ctx context.Context, message []byte) error <span class="cov10" title="9">{
+        return r.c.LPush(ctx, r.queueName, message).Err()
+}</span>
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package queue
+
+import "github.com/redis/go-redis/v9"
+
+// redisQueue is a struct that implements the Repository interface using Redis as the underlying storage mechanism.
+type redisQueue struct {
+        c         *redis.Client
+        queueName string
+}
+
+// NewRedisQueue creates a new instance of redisQueue.
+// Parameters:
+//   - c: A pointer to a redis.Client instance that will be used to interact with the Redis server.
+//   - queueName: The name of the Redis list that will be used as the message queue.
+//
+// Returns a Repository interface that can be used to push messages to the Redis queue.
+func NewRedisQueue(c *redis.Client, queueName string) Repository <span class="cov10" title="126">{
+        return &amp;redisQueue{
+                c:         c,
+                queueName: queueName,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">package bookmark
+
+import (
+        "context"
+        "fmt"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// CreateBookmark creates a new bookmark in the database.
+// It takes a context, URL, description, and userID as input.
+// Returns the created bookmark model and an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - url: The URL of the bookmark.
+//   - description: A description of the bookmark.
+//   - userID: The ID of the user who owns the bookmark.
+//
+// Returns:
+//   - *model.Bookmark: The created bookmark model.
+//   - error: An error if the creation fails, otherwise nil.
+func (b *bookmarkServiceWithCache) CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error) <span class="cov10" title="9">{
+        err := b.cache.DelCacheData(ctx, fmt.Sprintf(ListBookmarksCacheGroupKey, userID))
+        if err != nil </span><span class="cov5" title="3">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="6">return b.svc.CreateBookmark(ctx, url, description, userID)</span>
+}
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package bookmark
+
+import (
+        "context"
+        "fmt"
+)
+
+// DeleteBookmarkByID deletes a bookmark from the database by its ID.
+// It takes a context, an ID, and a user ID as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be deleted.
+//   - userID: The ID of the user who owns the bookmark.
+//
+// Returns:
+//   - error: An error if the deletion fails, otherwise nil.
+func (b *bookmarkServiceWithCache) DeleteBookmarkByID(ctx context.Context, id, userID string) error <span class="cov10" title="15">{
+        err := b.cache.DelCacheData(ctx, fmt.Sprintf(ListBookmarksCacheGroupKey, userID))
+        if err != nil </span><span class="cov4" title="3">{
+                return err
+        }</span>
+        <span class="cov9" title="12">return b.svc.DeleteBookmarkByID(ctx, id, userID)</span>
+}
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">package bookmark
+
+import (
+        "bytes"
+        "context"
+        "encoding/json"
+        "fmt"
+
+        "github.com/rs/zerolog/log"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+)
+
+type listBookmarksCacheData struct {
+        Bookmarks []*model.Bookmark `json:"bookmarks"`
+        Total     int64             `json:"total"`
+}
+
+// ListBookmarks retrieves a list of bookmarks for a specific user based on the provided query options.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - userID: The ID of the user whose bookmarks are to be retrieved.
+//   - opts: Query options for filtering, sorting, and pagination.
+//
+// Returns:
+//   - []*model.Bookmark: A slice of bookmark models.
+//   - error: An error if the retrieval fails.
+func (b *bookmarkServiceWithCache) ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error) <span class="cov8" title="12">{
+        groupKey := fmt.Sprintf(ListBookmarksCacheGroupKey, userID)
+        cacheKey := GenerateCacheKeyFromQueryOptions(opts)
+
+        data := &amp;listBookmarksCacheData{}
+        cachedData, err := b.cache.GetCacheData(ctx, groupKey, cacheKey)
+        if err == nil &amp;&amp; len(cachedData) &gt; 0 </span><span class="cov4" title="3">{
+                err := json.Unmarshal(cachedData, &amp;data)
+                if err == nil </span><span class="cov4" title="3">{
+                        opts.Total = data.Total
+                        return data.Bookmarks, nil
+                }</span>
+        }
+
+        <span class="cov7" title="9">bookmarks, err := b.svc.ListBookmarks(ctx, userID, opts)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov7" title="9">bookmarksBytes, err := json.Marshal(&amp;listBookmarksCacheData{
+                Bookmarks: bookmarks,
+                Total:     opts.Total,
+        })
+        if err == nil </span><span class="cov7" title="9">{
+                cacheErr := b.cache.SetCacheData(ctx, groupKey, cacheKey, bookmarksBytes, ListBookmarksCacheTTL)
+                if cacheErr != nil </span><span class="cov0" title="0">{
+                        log.Error().Err(cacheErr).Msg("failed to set cache for list bookmarks")
+                }</span>
+        }
+
+        <span class="cov7" title="9">return bookmarks, nil</span>
+}
+
+func GenerateCacheKeyFromQueryOptions(opts *common.QueryOptions) string <span class="cov10" title="18">{
+        var strBuilder bytes.Buffer
+        for _, sort := range opts.Sorting </span><span class="cov10" title="18">{
+                strBuilder.WriteString(sort.Field)
+                strBuilder.WriteString("_")
+                strBuilder.WriteString(string(sort.Direction))
+                strBuilder.WriteString("_")
+        }</span>
+
+        <span class="cov10" title="18">return fmt.Sprintf(ListBookmarksCacheKeyFormat, opts.Page, opts.Limit, strBuilder.String())</span>
+}
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">package bookmark
+
+import (
+        "time"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/cache"
+)
+
+const (
+        ListBookmarksCacheGroupKey  = "list_bookmarks_%s"         // list_bookmarks_{userID}
+        ListBookmarksCacheKeyFormat = "page_%d_size_%d_sortby_%s" // page_{page}_size_{size}_sort_{sort}
+        ListBookmarksCacheTTL       = 24 * time.Hour              // 24 hours TTL for cached bookmark lists
+)
+
+type bookmarkServiceWithCache struct {
+        svc   Service
+        cache cache.DB
+}
+
+// NewBookmarkServiceWithCache creates a new bookmark service with caching capabilities.
+//
+// Parameters:
+//   - svc: The underlying bookmark service to be wrapped.
+//   - cache: The cache database interface for caching operations.
+//
+// Returns:
+//   - Service: An instance of the bookmark service with caching.
+func NewBookmarkServiceWithCache(svc Service, cache cache.DB) Service <span class="cov10" title="144">{
+        return &amp;bookmarkServiceWithCache{
+                svc:   svc,
+                cache: cache,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package bookmark
+
+import (
+        "context"
+        "fmt"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// UpdateBookmarkByID updates an existing bookmark in the database by its ID.
+// It takes a context, an ID, and a bookmark model with updated details as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be updated.
+//   - updatedBookmark: The bookmark model containing the updated details.
+//
+// Returns:
+//   - error: An error if the update fails, otherwise nil.
+func (b *bookmarkServiceWithCache) UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error <span class="cov10" title="15">{
+        err := b.cache.DelCacheData(ctx, fmt.Sprintf(ListBookmarksCacheGroupKey, userID))
+        if err != nil </span><span class="cov4" title="3">{
+                return err
+        }</span>
+        <span class="cov9" title="12">return b.svc.UpdateBookmarkByID(ctx, id, userID, updatedBookmark)</span>
+}
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// CreateBookmark creates a new bookmark with the provided information.
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - url: The URL of the bookmark.
+//   - description: A description of the bookmark.
+//   - userID: The ID of the user who owns the bookmark.
+//
+// Returns:
+//   - *model.Bookmark: The created bookmark model.
+//   - error: An error if the creation fails, otherwise nil.
+func (s *bookmarkService) CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error) <span class="cov10" title="9">{
+        newBookmark := &amp;model.Bookmark{
+                URL:         url,
+                Description: description,
+                UserID:      userID,
+        }
+
+        createdBookmark, err := s.repo.CreateBookmark(ctx, newBookmark)
+        if err != nil </span><span class="cov5" title="3">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="6">return createdBookmark, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">package bookmark
+
+import "context"
+
+// DeleteBookmarkByID deletes a bookmark from the database by its ID.
+// It takes a context, an ID, and a user ID as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be deleted.
+//   - userID: The ID of the user who owns the bookmark.
+//
+// Returns:
+//   - error: An error if the deletion fails, otherwise nil.
+func (b *bookmarkService) DeleteBookmarkByID(ctx context.Context, id, userID string) error <span class="cov10" title="15">{
+        return b.repo.DeleteBookmarkByID(ctx, id, userID)
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+)
+
+// ListBookmarks retrieves a list of bookmarks for a specific user based on the provided query options.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - userID: The ID of the user whose bookmarks are to be retrieved.
+//   - opts: Query options for filtering, sorting, and pagination.
+//
+// Returns:
+//   - []*model.Bookmark: A slice of bookmark models.
+//   - error: An error if the retrieval fails.
+func (b *bookmarkService) ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error) <span class="cov10" title="12">{
+        return b.repo.ListBookmarks(ctx, userID, opts)
+}</span>
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark"
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+)
+
+const DEFAULT_CODE_LENGTH = 10
+
+// Service defines the interface for bookmark-related business logic.
+//
+//go:generate mockery --name=Service --filename=service.go --output=./mocks
+type Service interface {
+        // CreateBookmark creates a new bookmark with the provided information.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - url: The URL of the bookmark.
+        //   - description: A description of the bookmark.
+        //   - userID: The ID of the user who owns the bookmark.
+        //
+        // Returns:
+        //   - *model.Bookmark: The created bookmark model.
+        //   - error: An error if the creation fails, otherwise nil.
+        CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error)
+
+        // ListBookmarks retrieves a list of bookmarks for a specific user with optional query options.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - userID: The ID of the user whose bookmarks are to be retrieved.
+        //   - opts: QueryOptions containing pagination and sorting details.
+        //
+        // Returns:
+        //   - []*model.Bookmark: A slice of bookmark models.
+        //   - error: An error if the retrieval fails, otherwise nil.
+        ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error)
+
+        // UpdateBookmarkByID updates a bookmark by its ID and user ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - id: The ID of the bookmark to be updated.
+        //   - userID: The ID of the user who owns the bookmark.
+        //   - updatedBookmark: The bookmark model containing the updated details.
+        //
+        // Returns:
+        //   - error: An error if the update fails, otherwise nil.
+        UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error
+
+        // DeleteBookmarkByID deletes a bookmark by its ID and user ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request-scoped values and cancellation.
+        //   - id: The ID of the bookmark to be deleted.
+        //   - userID: The ID of the user who owns the bookmark.
+        //
+        // Returns:
+        //   - error: An error if the deletion fails, otherwise nil.
+        DeleteBookmarkByID(ctx context.Context, id, userID string) error
+}
+
+// bookmarkService is the concrete implementation of the Service interface.
+type bookmarkService struct {
+        repo bookmark.Repository
+}
+
+// NewBookmarkService creates a new instance of bookmarkService.
+// It takes a bookmark.Repository as its dependency
+// and returns a Service interface.
+func NewBookmarkService(repo bookmark.Repository) Service <span class="cov10" title="147">{
+        return &amp;bookmarkService{
+                repo: repo,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package bookmark
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// UpdateBookmarkByID updates an existing bookmark in the database by its ID.
+// It takes a context, an ID, and a bookmark model with updated details as input.
+// Returns an error if the operation fails.
+//
+// Parameters:
+//   - ctx: The context for managing request-scoped values and cancellation.
+//   - id: The ID of the bookmark to be updated.
+//   - updatedBookmark: The bookmark model containing the updated details.
+//
+// Returns:
+//   - error: An error if the update fails, otherwise nil.
+func (b *bookmarkService) UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error <span class="cov10" title="18">{
+        return b.repo.UpdateBookmarkByID(ctx, id, userID, updatedBookmark)
+}</span>
+</pre>
+		
+		<pre class="file" id="file42" style="display: none">package healthcheck
+
+import "context"
+
+// Check performs a health check and returns the status, service name, and instance ID.
+// It always returns "OK" as the status for a healthy service.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//
+// Returns:
+//   - string: The health status ("OK")
+//   - string: The name of the service
+//   - string: The unique instance ID of the service
+//   - error: An error if the health check fails, nil otherwise
+func (s *healthCheckService) Check(ctx context.Context) (string, string, string, error) <span class="cov10" title="12">{
+        if err := s.healthCheckRepo.RedisPing(ctx); err != nil </span><span class="cov4" title="3">{
+                return RedisPingTimeout, s.serviceName, s.instanceID, err
+        }</span>
+
+        <span class="cov8" title="9">if err := s.healthCheckRepo.DBPing(ctx); err != nil </span><span class="cov4" title="3">{
+                return DBPingConfused, s.serviceName, s.instanceID, err
+        }</span>
+
+        <span class="cov7" title="6">return StatusOK, s.serviceName, s.instanceID, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file43" style="display: none">// Package healthcheck provides functionality for performing health checks on the service.
+// It defines the HealthCheck interface and its implementation.
+// The health check service uses a repository to perform checks on dependencies like Redis and the database.
+// This package is essential for monitoring the health status of the application.
+package healthcheck
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/healthcheck"
+)
+
+const (
+        StatusOK         = "OK"
+        RedisPingTimeout = "redis: client is closed"
+        DBPingConfused   = "database: database is closed"
+)
+
+// Service defines the interface for health check service.
+// It provides a method to perform health checks and retrieve service status.
+//
+//go:generate mockery --name Service --filename health_check_service.go --output ./mocks
+type Service interface {
+        // Check performs a health check and returns the status, service name, and instance ID.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //
+        // Returns:
+        //   - string: The health status ("OK")
+        //   - string: The name of the service
+        //   - string: The unique instance ID of the service
+        //   - error: An error if the health check fails, nil otherwise
+        Check(ctx context.Context) (string, string, string, error)
+}
+
+// healthCheckService implements the Service interface and provides methods for performing health checks.
+type healthCheckService struct {
+        serviceName     string
+        instanceID      string
+        healthCheckRepo healthcheck.Repository
+}
+
+// NewHealthCheckService creates a new instance of HealthCheck service.
+//
+// Parameters:
+//   - serviceName: The name of the service
+//   - instanceID: The unique instance ID of the service
+//   - healthCheckRepo: The repository used for performing health checks
+//
+// Returns:
+//   - Service: The initialized HealthCheck service instance
+func NewHealthCheckService(serviceName, instanceID string, healthCheckRepo healthcheck.Repository) Service <span class="cov10" title="129">{
+        return &amp;healthCheckService{
+                serviceName:     serviceName,
+                instanceID:      instanceID,
+                healthCheckRepo: healthCheckRepo,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file44" style="display: none">package link
+
+import (
+        "context"
+        "errors"
+        "strings"
+
+        "github.com/redis/go-redis/v9"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// GetURL retrieves the original URL associated with the given shortened URL code.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//   - urlCode: The shortened URL code
+//
+// Returns:
+//   - string: The original URL associated with the shortened code
+//   - error: An error object if the retrieval operation fails, otherwise nil
+func (s *linkService) GetURL(ctx context.Context, urlCode string) (string, error) <span class="cov10" title="21">{
+        switch </span>{
+        case strings.HasPrefix(urlCode, model.RedisShortenPrefix) &amp;&amp; len(urlCode) == defaultURLCodeLength+1:<span class="cov7" title="9">
+                url, err := s.repo.GetURL(ctx, urlCode)
+                if errors.Is(err, redis.Nil) </span><span class="cov4" title="3">{
+                        return "", ErrCodeNotFound
+                }</span>
+
+                <span class="cov6" title="6">return url, err</span>
+        case strings.HasPrefix(urlCode, model.BookmarkShortenPrefix):<span class="cov6" title="6">
+                bookmark, err := s.bookmarkRepo.GetBookmarkByCodeShortenEncoded(ctx, urlCode)
+                if err != nil </span><span class="cov0" title="0">{
+                        return "", err
+                }</span>
+                <span class="cov6" title="6">return bookmark.URL, nil</span>
+        default:<span class="cov6" title="6">
+                return "", ErrCodeNotFound</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file45" style="display: none">// Package link provides functionality for URL shortening and retrieval services.
+// It defines the ShortenURL interface and its implementation.
+// The ShortenURL service uses a repository for storing and retrieving URLs,
+// and a code generator for creating unique shortened URL codes.
+// This package is essential for managing URL shortening operations in the application.
+package link
+
+import (
+        "context"
+        "errors"
+
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/utils"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/bookmark"
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/link"
+)
+
+const (
+        defaultURLCodeLength = 8
+        maxRetryAttempts     = 10
+)
+
+var (
+        ErrCodeNotFound       = errors.New("shortened URL not found")
+        ErrMaxRetriesExceeded = errors.New("maximum retry attempts exceeded for generating unique URL code")
+)
+
+// Service defines the interface for shortening URLs.
+//
+//go:generate mockery --name Service --filename shorten_url_service.go --output ./mocks
+type Service interface {
+        // ShortenURL generates a shortened URL code for the given original URL.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //   - originalURL: The original URL to be shortened
+        //   - expireIn: The expiration time in seconds for the shortened URL
+        //
+        // Returns:
+        //   - string: The generated shortened URL code
+        //   - error: An error object if the shortening operation fails, otherwise nil
+        ShortenURL(ctx context.Context, originalURL string, expireIn int) (string, error)
+
+        // GetURL retrieves the original URL associated with the given shortened URL code.
+        //
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellations
+        //   - urlCode: The shortened URL code
+        //
+        // Returns:
+        //   - string: The original URL associated with the shortened code
+        //   - error: An error object if the retrieval operation fails, otherwise nil
+        GetURL(ctx context.Context, urlCode string) (string, error)
+}
+
+// linkService implements the Service interface and provides methods for shortening URLs.
+type linkService struct {
+        repo          link.Repository
+        randomCodeGen utils.CodeGenerator
+        bookmarkRepo  bookmark.Repository
+}
+
+// NewLinkService creates a new instance of Service.
+//
+// Parameters:
+//   - repo: The repository used for URL storage operations
+//   - randomCodeGen: The code generator used for generating random codes
+//   - bookmarkRepo: The bookmark repository for additional bookmark-related operations
+//
+// Returns:
+//   - Service: The initialized Service instance
+func NewLinkService(repo link.Repository, randomCodeGen utils.CodeGenerator, bookmarkRepo bookmark.Repository) Service <span class="cov10" title="147">{
+        return &amp;linkService{
+                repo:          repo,
+                randomCodeGen: randomCodeGen,
+                bookmarkRepo:  bookmarkRepo,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file46" style="display: none">package link
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/model"
+)
+
+// ShortenURL generates a shortened URL code for the given original URL.
+// It retries code generation if a collision is detected, up to maxRetryAttempts.
+//
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellations
+//   - originalURL: The original URL to be shortened
+//   - expireIn: The expiration time in seconds for the shortened URL
+//
+// Returns:
+//   - string: The generated shortened URL code
+//   - error: An error object if the shortening operation fails, otherwise nil
+func (s *linkService) ShortenURL(ctx context.Context, originalURL string, expireIn int) (string, error) <span class="cov7" title="18">{
+        for attempt := 1; attempt &lt;= maxRetryAttempts; attempt++ </span><span class="cov10" title="48">{
+                urlCode, err := s.randomCodeGen.GenerateCode(defaultURLCodeLength)
+                if err != nil </span><span class="cov3" title="3">{
+                        return "", err
+                }</span>
+
+                <span class="cov9" title="45">urlCode = model.RedisShortenPrefix + urlCode
+
+                stored, err := s.repo.StoreURLIfAbsent(ctx, urlCode, originalURL, expireIn)
+                if err != nil </span><span class="cov3" title="3">{
+                        return "", err
+                }</span>
+                <span class="cov9" title="42">if stored </span><span class="cov6" title="9">{
+                        return urlCode, nil // atomically claimed
+                }</span>
+                // collision — another request already holds this key, retry
+        }
+
+        <span class="cov3" title="3">return "", ErrMaxRetriesExceeded</span>
+}
+</pre>
+		
+		<pre class="file" id="file47" style="display: none">package queue
+
+import (
+        "context"
+        "encoding/json"
+        "errors"
+
+        "github.com/vukieuhaihoa/bookmark-libs/pkg/array"
+)
+
+const DefaultImportBookmarkBatchSize = 5
+
+var (
+        ErrUnmarshalMessage = errors.New("failed to unmarshal message")
+)
+
+type ImportMessage struct {
+        UID       string                 `json:"user_id"`
+        Bookmarks []*ImportBookmarkInput `json:"bookmarks"`
+}
+
+type ImportBookmarkInput struct {
+        Description string `csv:"description" binding:"required,lte=255" json:"description"`
+        URL         string `csv:"url" binding:"required,url,lte=1024" json:"url"`
+}
+
+// SendImportBookmarkJob sends a job to the message queue for importing bookmarks. It takes the user ID and a slice of ImportBookmarkInput, splits the bookmarks into batches, and sends each batch as a separate job to the queue. If any step fails, it returns an appropriate error.
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellation.
+//   - uid: The unique identifier of the user for whom the bookmarks are being imported.
+//   - bookmarks: A slice of ImportBookmarkInput containing the details of the bookmarks to be imported.
+//
+// Returns an error if the operation fails, otherwise nil.
+func (s *queueService) SendImportBookmarkJob(ctx context.Context, uid string, bookmarks []*ImportBookmarkInput) error <span class="cov9" title="12">{
+        batches := array.SplitIntoBatches(bookmarks, DefaultImportBookmarkBatchSize)
+        for _, batch := range batches </span><span class="cov10" title="15">{
+                if err := s.sendJob(ctx, uid, batch); err != nil </span><span class="cov4" title="3">{
+                        return err
+                }</span>
+        }
+        <span class="cov8" title="9">return nil</span>
+}
+
+// sendJob sends a single job to the message queue for importing bookmarks. It takes the user ID and a batch of bookmarks, constructs an ImportMessage, marshals it to JSON, and pushes it to the queue. If any step fails, it returns an appropriate error.
+// Parameters:
+//   - ctx: The context for managing request deadlines and cancellation.
+//   - uid: The unique identifier of the user for whom the bookmarks are being imported.
+//   - bookmarks: A slice of ImportBookmarkInput containing the details of the bookmarks to be imported.
+//
+// Returns an error if the operation fails, otherwise nil.
+func (s *queueService) sendJob(ctx context.Context, uid string, bookmarks []*ImportBookmarkInput) error <span class="cov10" title="15">{
+        message := ImportMessage{
+                UID:       uid,
+                Bookmarks: bookmarks,
+        }
+
+        messageBytes, err := json.Marshal(message)
+        if err != nil </span><span class="cov0" title="0">{
+                return ErrUnmarshalMessage
+        }</span>
+
+        <span class="cov10" title="15">return s.repo.PushMessage(ctx, messageBytes)</span>
+}
+</pre>
+		
+		<pre class="file" id="file48" style="display: none">package queue
+
+import (
+        "context"
+
+        "github.com/vukieuhaihoa/bookmark-service/internal/app/repository/queue"
+)
+
+// Service defines the interface for interacting with the message queue.
+//
+//go:generate mockery --name Service --filename queue_service.go --output ./mocks
+type Service interface {
+        // SendImportBookmarkJob sends a job to the message queue for importing bookmarks.
+        // Parameters:
+        //   - ctx: The context for managing request deadlines and cancellation.
+        //   - uid: The unique identifier of the user for whom the bookmarks are being imported.
+        //   - bookmarks: A slice of ImportBookmarkInput containing the details of the bookmarks to be imported.
+        //
+        // Returns an error if the operation fails, otherwise nil.
+        SendImportBookmarkJob(ctx context.Context, uid string, bookmarks []*ImportBookmarkInput) error
+}
+
+// queueService is the concrete implementation of the Service interface that interacts with the message queue.
+type queueService struct {
+        repo queue.Repository
+}
+
+// NewQueueService creates a new instance of queueService with the provided queue.Repository.
+// Parameters:
+//   - repo: An implementation of the queue.Repository interface that will be used by the service.
+//
+// Returns a Service interface that can be used to interact with the message queue.
+func NewQueueService(repo queue.Repository) Service <span class="cov10" title="129">{
+        return &amp;queueService{
+                repo: repo,
+        }
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
