@@ -7,7 +7,6 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -170,8 +169,7 @@ func TestBookmarkEndpoint_ImportBookmarks(t *testing.T) {
 
 			ctx := context.Background()
 
-			writer, body, tmpfile := testutils.CreateMultipartRequest(t, tc.fileContent)
-			defer os.Remove(tmpfile)
+			writer, body := testutils.CreateMultipartRequest(t, tc.fileContent)
 
 			jwtValidator := tc.setupMockJWTValidator(t)
 			redisClient := redisPkg.InitMockRedis(t)

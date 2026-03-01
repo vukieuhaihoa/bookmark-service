@@ -5,7 +5,6 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"strings"
 	"testing"
 
@@ -168,8 +167,7 @@ func TestHandler_ImportBookmarks(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 
-			writer, body, tmpfile := testutils.CreateMultipartRequest(t, tc.fileContent)
-			defer os.Remove(tmpfile)
+			writer, body := testutils.CreateMultipartRequest(t, tc.fileContent)
 
 			rec := httptest.NewRecorder()
 			ctx, _ := gin.CreateTestContext(rec)
