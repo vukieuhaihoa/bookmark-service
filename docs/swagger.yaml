@@ -306,6 +306,53 @@ paths:
       summary: Update bookmark by ID
       tags:
       - Bookmarks
+  /v1/bookmarks/import:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Import bookmarks from a file for the authenticated user
+      parameters:
+      - description: Bookmarks file to import
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      security:
+      - Bearer: []
+      summary: Import bookmarks from a file
+      tags:
+      - Bookmarks
   /v1/links/redirect/{code}:
     get:
       consumes:
