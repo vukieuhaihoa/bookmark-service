@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
@@ -39,6 +40,9 @@ type createBookmarkResponse struct {
 // @Router       /v1/bookmarks [post]
 func (h *bookmarkHandler) CreateBookmark(c *gin.Context) {
 	// Implementation of the handler to create a bookmark
+	s := newrelic.FromContext(c).StartSegment("Handler_CreateBookmark")
+	defer s.End()
+
 	input := &createBookmarkRequest{}
 	if err := c.ShouldBindJSON(input); err != nil {
 		c.JSON(http.StatusBadRequest, common.InputErrorResponse)

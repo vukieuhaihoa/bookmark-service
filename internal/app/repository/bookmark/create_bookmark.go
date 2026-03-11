@@ -3,6 +3,7 @@ package bookmark
 import (
 	"context"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/encoding"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
@@ -21,6 +22,9 @@ import (
 //   - *model.Bookmark: The created bookmark model.
 //   - error: An error if the creation fails, otherwise nil.
 func (r *bookmarkRepository) CreateBookmark(ctx context.Context, bookmark *model.Bookmark) (*model.Bookmark, error) {
+	s := newrelic.FromContext(ctx).StartSegment("Repo_CreateBookmark")
+	defer s.End()
+
 	err := r.db.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		// NULL is inserted for code_shorten_encoded — no UNIQUE conflict
 		if err := tx.Omit("CodeShortenEncoded").Create(bookmark).Error; err != nil {

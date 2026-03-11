@@ -5,6 +5,7 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/redis/go-redis/v9"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
@@ -18,17 +19,20 @@ import (
 // Returns:
 //   - string: The original URL associated with the shortened code
 //   - error: An error object if the retrieval operation fails, otherwise nil
-func (s *linkService) GetURL(ctx context.Context, urlCode string) (string, error) {
+func (l *linkService) GetURL(ctx context.Context, urlCode string) (string, error) {
+	s := newrelic.FromContext(ctx).StartSegment("Service_GetURL")
+	defer s.End()
+
 	switch {
 	case strings.HasPrefix(urlCode, model.RedisShortenPrefix) && len(urlCode) == defaultURLCodeLength+1:
-		url, err := s.repo.GetURL(ctx, urlCode)
+		url, err := l.repo.GetURL(ctx, urlCode)
 		if errors.Is(err, redis.Nil) {
 			return "", ErrCodeNotFound
 		}
 
 		return url, err
 	case strings.HasPrefix(urlCode, model.BookmarkShortenPrefix):
-		bookmark, err := s.bookmarkRepo.GetBookmarkByCodeShortenEncoded(ctx, urlCode)
+		bookmark, err := l.bookmarkRepo.GetBookmarkByCodeShortenEncoded(ctx, urlCode)
 		if err != nil {
 			return "", err
 		}

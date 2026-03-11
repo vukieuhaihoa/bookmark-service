@@ -3,6 +3,7 @@ package bookmark
 import (
 	"context"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
@@ -16,14 +17,17 @@ import (
 // Returns:
 //   - *model.Bookmark: The created bookmark model.
 //   - error: An error if the creation fails, otherwise nil.
-func (s *bookmarkService) CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error) {
+func (b *bookmarkService) CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error) {
+	s := newrelic.FromContext(ctx).StartSegment("Service_CreateBookmark")
+	defer s.End()
+
 	newBookmark := &model.Bookmark{
 		URL:         url,
 		Description: description,
 		UserID:      userID,
 	}
 
-	createdBookmark, err := s.repo.CreateBookmark(ctx, newBookmark)
+	createdBookmark, err := b.repo.CreateBookmark(ctx, newBookmark)
 	if err != nil {
 		return nil, err
 	}

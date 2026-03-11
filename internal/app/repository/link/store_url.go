@@ -3,6 +3,8 @@ package link
 import (
 	"context"
 	"time"
+
+	"github.com/newrelic/go-agent/v3/newrelic"
 )
 
 // StoreURL stores the given URL with the associated code in Redis with a default expiration time.
@@ -16,6 +18,9 @@ import (
 // Returns:
 //   - error: An error object if the storage operation fails, otherwise nil
 func (s *linkRepository) StoreURL(ctx context.Context, code, url string, expireIn int) error {
+	nrs := newrelic.FromContext(ctx).StartSegment("Repo_StoreURL")
+	defer nrs.End()
+
 	if expireIn <= 0 {
 		expireIn = int(defaultURLExpireTime)
 	}

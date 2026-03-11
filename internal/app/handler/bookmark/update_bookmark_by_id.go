@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
@@ -33,6 +34,9 @@ type updateBookmarkRequest struct {
 // @Security     BearerAuth
 // @Router       /v1/bookmarks/{id} [put]
 func (b *bookmarkHandler) UpdateBookmarkByID(c *gin.Context) {
+	s := newrelic.FromContext(c).StartSegment("Handler_UpdateBookmarkByID")
+	defer s.End()
+
 	input := &updateBookmarkRequest{}
 	if err := c.ShouldBindJSON(input); err != nil {
 		c.JSON(http.StatusBadRequest, common.InputFieldError(err))

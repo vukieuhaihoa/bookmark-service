@@ -3,6 +3,8 @@ package link
 import (
 	"context"
 	"time"
+
+	"github.com/newrelic/go-agent/v3/newrelic"
 )
 
 // StoreURLIfAbsent attempts to store the given URL with the associated code in Redis only if the code does not already exist.
@@ -18,6 +20,9 @@ import (
 //   - bool: True if the URL was stored (code was absent), false if the code already exists
 //   - error: An error object if the storage operation fails, otherwise nil
 func (s *linkRepository) StoreURLIfAbsent(ctx context.Context, code, url string, expireIn int) (bool, error) {
+	nrs := newrelic.FromContext(ctx).StartSegment("Repo_StoreURLIfAbsent")
+	defer nrs.End()
+
 	if expireIn <= 0 {
 		expireIn = int(defaultURLExpireTime.Seconds())
 	}

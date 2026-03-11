@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
@@ -21,6 +22,9 @@ import (
 //   - *model.Bookmark: The created bookmark model.
 //   - error: An error if the creation fails, otherwise nil.
 func (b *bookmarkServiceWithCache) CreateBookmark(ctx context.Context, url, description, userID string) (*model.Bookmark, error) {
+	s := newrelic.FromContext(ctx).StartSegment("Service_CreateBookmark_WithCache")
+	defer s.End()
+
 	err := b.cache.DelCacheData(ctx, fmt.Sprintf(ListBookmarksCacheGroupKey, userID))
 	if err != nil {
 		return nil, err

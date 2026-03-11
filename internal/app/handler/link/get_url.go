@@ -5,9 +5,10 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
-	service "github.com/vukieuhaihoa/bookmark-service/internal/app/service/link"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
+	service "github.com/vukieuhaihoa/bookmark-service/internal/app/service/link"
 )
 
 // GetURL handles the request to retrieve the original URL from a shortened code.
@@ -27,6 +28,9 @@ import (
 // @Failure 500 {object} shortenURLResponse
 // @Router /v1/links/redirect/{code} [get]
 func (h *linkHandler) GetURL(c *gin.Context) {
+	s := newrelic.FromContext(c).StartSegment("Handler_GetURL")
+	defer s.End()
+
 	code := c.Param("code")
 	if code == "" {
 		c.JSON(http.StatusBadRequest, shortenURLResponse{

@@ -6,9 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
-	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
+	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
 type listBookmarksCacheData struct {
@@ -27,6 +28,10 @@ type listBookmarksCacheData struct {
 //   - []*model.Bookmark: A slice of bookmark models.
 //   - error: An error if the retrieval fails.
 func (b *bookmarkServiceWithCache) ListBookmarks(ctx context.Context, userID string, opts *common.QueryOptions) ([]*model.Bookmark, error) {
+	nrTx := newrelic.FromContext(ctx)
+	s := nrTx.StartSegment("Service_ListBookmarks_WithCache")
+	defer s.End()
+
 	groupKey := fmt.Sprintf(ListBookmarksCacheGroupKey, userID)
 	cacheKey := GenerateCacheKeyFromQueryOptions(opts)
 
@@ -35,6 +40,11 @@ func (b *bookmarkServiceWithCache) ListBookmarks(ctx context.Context, userID str
 	if err == nil && len(cachedData) > 0 {
 		err := json.Unmarshal(cachedData, &data)
 		if err == nil {
+			nrTx.Application().RecordCustomEvent("CacheHit", map[string]interface{}{
+				"endpoint":  "GET /v1/bookmarks",
+				"cache_hit": true,
+			})
+
 			opts.Total = data.Total
 			return data.Bookmarks, nil
 		}
@@ -56,6 +66,10 @@ func (b *bookmarkServiceWithCache) ListBookmarks(ctx context.Context, userID str
 		}
 	}
 
+	nrTx.Application().RecordCustomEvent("CacheHit", map[string]interface{}{
+		"endpoint":  "GET /v1/bookmarks",
+		"cache_hit": false,
+	})
 	return bookmarks, nil
 }
 
