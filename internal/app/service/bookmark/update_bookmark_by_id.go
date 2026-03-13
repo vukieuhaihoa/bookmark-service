@@ -3,6 +3,7 @@ package bookmark
 import (
 	"context"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
@@ -18,5 +19,8 @@ import (
 // Returns:
 //   - error: An error if the update fails, otherwise nil.
 func (b *bookmarkService) UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error {
+	s := newrelic.FromContext(ctx).StartSegment("Service_UpdateBookmarkByID")
+	defer s.End()
+
 	return b.repo.UpdateBookmarkByID(ctx, id, userID, updatedBookmark)
 }

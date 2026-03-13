@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 
 	"github.com/gin-gonic/gin"
@@ -44,6 +45,9 @@ type PagingRequest struct {
 // @Security		 Bearer
 // @Router       /v1/bookmarks [get]
 func (b *bookmarkHandler) ListBookmarks(c *gin.Context) {
+	s := newrelic.FromContext(c).StartSegment("Handler_ListBookmarks")
+	defer s.End()
+
 	input := &PagingRequest{}
 	if err := c.ShouldBindQuery(input); err != nil {
 		c.JSON(http.StatusBadRequest, common.InputFieldError(err))

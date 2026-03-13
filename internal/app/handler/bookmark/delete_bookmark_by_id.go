@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/dbutils"
@@ -25,6 +26,9 @@ import (
 // @Security     Bearer
 // @Router       /v1/bookmarks/{id} [delete]
 func (b *bookmarkHandler) DeleteBookmarkByID(c *gin.Context) {
+	s := newrelic.FromContext(c).StartSegment("Handler_DeleteBookmarkByID")
+	defer s.End()
+
 	bookmarkID := c.Param("id")
 	if bookmarkID == "" {
 		c.JSON(http.StatusBadRequest, common.Message{

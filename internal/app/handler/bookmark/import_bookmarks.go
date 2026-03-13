@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/common"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/csv"
@@ -27,6 +28,9 @@ const LimitCSVFileSize = 10 << 20 // 10 MiB
 // @Security		 Bearer
 // @Router       /v1/bookmarks/import [post]
 func (h *bookmarkHandler) ImportBookmarks(c *gin.Context) {
+	s := newrelic.FromContext(c).StartSegment("Handler_ImportBookmarks")
+	defer s.End()
+
 	// get user ID from JWT claims
 	uid, err := utils.GetUserIDFromJWTClaims(c)
 	if err != nil {

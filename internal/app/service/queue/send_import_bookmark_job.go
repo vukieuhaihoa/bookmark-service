@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-libs/pkg/array"
 )
 
@@ -33,10 +34,13 @@ type ImportBookmarkInput struct {
 //   - bookmarks: A slice of ImportBookmarkInput containing the details of the bookmarks to be imported.
 //
 // Returns an error if the operation fails, otherwise nil.
-func (s *queueService) SendImportBookmarkJob(ctx context.Context, uid string, bookmarks []*ImportBookmarkInput) error {
+func (q *queueService) SendImportBookmarkJob(ctx context.Context, uid string, bookmarks []*ImportBookmarkInput) error {
+	s := newrelic.FromContext(ctx).StartSegment("Service_SendImportBookmarkJob")
+	defer s.End()
+
 	batches := array.SplitIntoBatches(bookmarks, DefaultImportBookmarkBatchSize)
 	for _, batch := range batches {
-		if err := s.sendJob(ctx, uid, batch); err != nil {
+		if err := q.sendJob(ctx, uid, batch); err != nil {
 			return err
 		}
 	}

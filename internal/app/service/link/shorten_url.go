@@ -3,6 +3,7 @@ package link
 import (
 	"context"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
@@ -17,16 +18,19 @@ import (
 // Returns:
 //   - string: The generated shortened URL code
 //   - error: An error object if the shortening operation fails, otherwise nil
-func (s *linkService) ShortenURL(ctx context.Context, originalURL string, expireIn int) (string, error) {
+func (l *linkService) ShortenURL(ctx context.Context, originalURL string, expireIn int) (string, error) {
+	s := newrelic.FromContext(ctx).StartSegment("Service_ShortenURL")
+	defer s.End()
+
 	for attempt := 1; attempt <= maxRetryAttempts; attempt++ {
-		urlCode, err := s.randomCodeGen.GenerateCode(defaultURLCodeLength)
+		urlCode, err := l.randomCodeGen.GenerateCode(defaultURLCodeLength)
 		if err != nil {
 			return "", err
 		}
 
 		urlCode = model.RedisShortenPrefix + urlCode
 
-		stored, err := s.repo.StoreURLIfAbsent(ctx, urlCode, originalURL, expireIn)
+		stored, err := l.repo.StoreURLIfAbsent(ctx, urlCode, originalURL, expireIn)
 		if err != nil {
 			return "", err
 		}

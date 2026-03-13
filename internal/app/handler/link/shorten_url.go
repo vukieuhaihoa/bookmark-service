@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog/log"
 )
 
@@ -35,6 +36,9 @@ type shortenURLResponse struct {
 // @Router /v1/links/shorten [post]
 func (h *linkHandler) ShortenURL(c *gin.Context) {
 	// Implementation goes here
+	s := newrelic.FromContext(c).StartSegment("Handler_ShortenURL")
+	defer s.End()
+
 	input := &shortenURLRequest{}
 	err := c.ShouldBindJSON(input)
 	if err != nil || input.URL == "" || input.ExpireIn <= 0 {

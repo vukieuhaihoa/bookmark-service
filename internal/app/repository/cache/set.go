@@ -3,6 +3,8 @@ package cache
 import (
 	"context"
 	"time"
+
+	"github.com/newrelic/go-agent/v3/newrelic"
 )
 
 // SetCacheData sets the cache data for a given group key and key with an expiration time.
@@ -17,6 +19,9 @@ import (
 // Returns:
 //   - error: An error if the operation fails, otherwise nil.
 func (db *redisCache) SetCacheData(ctx context.Context, groupKey, key string, value interface{}, exp time.Duration) error {
+	s := newrelic.FromContext(ctx).StartSegment("Repo_SetCacheData")
+	defer s.End()
+
 	err := db.client.HSet(ctx, groupKey, key, value).Err()
 	if err != nil {
 		return err

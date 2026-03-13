@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/vukieuhaihoa/bookmark-service/internal/app/model"
 )
 
@@ -19,6 +20,9 @@ import (
 // Returns:
 //   - error: An error if the update fails, otherwise nil.
 func (b *bookmarkServiceWithCache) UpdateBookmarkByID(ctx context.Context, id, userID string, updatedBookmark *model.Bookmark) error {
+	s := newrelic.FromContext(ctx).StartSegment("Service_UpdateBookmarkByID_WithCache")
+	defer s.End()
+
 	err := b.cache.DelCacheData(ctx, fmt.Sprintf(ListBookmarksCacheGroupKey, userID))
 	if err != nil {
 		return err

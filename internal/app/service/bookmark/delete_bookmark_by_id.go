@@ -1,6 +1,10 @@
 package bookmark
 
-import "context"
+import (
+	"context"
+
+	"github.com/newrelic/go-agent/v3/newrelic"
+)
 
 // DeleteBookmarkByID deletes a bookmark from the database by its ID.
 // It takes a context, an ID, and a user ID as input.
@@ -14,5 +18,8 @@ import "context"
 // Returns:
 //   - error: An error if the deletion fails, otherwise nil.
 func (b *bookmarkService) DeleteBookmarkByID(ctx context.Context, id, userID string) error {
+	s := newrelic.FromContext(ctx).StartSegment("Service_DeleteBookmarkByID")
+	defer s.End()
+
 	return b.repo.DeleteBookmarkByID(ctx, id, userID)
 }
